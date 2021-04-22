@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+    buildstatic:
+        build: .
+        image: frontend:lastest
+        ports:
+           - "80:80"
