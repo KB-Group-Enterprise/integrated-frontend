@@ -1,13 +1,13 @@
-import axios from '@/axios'
+import axios from "@/axios";
 export default {
   methods: {
-    async getHttp(api, obj) {
+    async getHttp(api) {
       try {
-        let res = await axios.post(`/${api}`, obj)
-        return res
+        let res = await axios.get(`/${api}`);
+        return res;
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     },
   },
-}
+};
