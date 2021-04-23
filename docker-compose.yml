@@ -1,7 +1,11 @@
 version: "3.8"
 services:
-    buildstatic:
+    frontend:
         build: .
-        image: frontend:lastest
+        image: frontend:production
         ports:
            - "80:80"
+networks:
+    default:
+       external:
+          name: integrated-network
