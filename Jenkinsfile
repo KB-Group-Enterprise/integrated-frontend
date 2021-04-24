@@ -19,8 +19,8 @@ pipeline {
         stage('clone project and checkout') {
             steps {
                 git branch: 'dev',
-                    credentialsId: 'gituser',
-                    url: 'https://github.com/KB-Group-Enterprise/integrated-frontend.git'
+                    credentialsId: 'sshgit',
+                    url: 'git@github.com:KB-Group-Enterprise/integrated-frontend.git'
 
                 sh 'ls -lat'
                 sh 'git log --oneline'
