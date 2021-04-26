@@ -9,23 +9,22 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import axios from '../mixins/api'
+import HelloWorld from '@/components/HelloWorld.vue';
 export default {
   name: 'Home',
   components: {
     HelloWorld,
   },
-  data(){
+  data() {
     return {
       status: '',
-    }
+    };
   },
   methods: {
-    showBackEndStatus(){
-      const data = axios.methods.getHttp('/health');
-      this.status = data;
-    }
-  }
-}
+    async showBackEndStatus() {
+      const res = await this.getHttp('/api/health');
+      this.status = res.data;
+    },
+  },
+};
 </script>

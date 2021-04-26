@@ -1,9 +1,9 @@
-import axios from "@/axios";
+import axios from '@/axios.js';
 export default {
   methods: {
     async getHttp(api) {
       try {
-        let res = await axios.get(`/${api}`);
+        let res = await axios.get(`${api}`);
         return res;
       } catch (e) {
         console.error(e);
