@@ -5,6 +5,9 @@ services:
         image: frontend:production
         ports:
            - "80:80"
+        environment:
+           - NODE_ENV=production
+           - BACKEND_URL=${BACKEND_URL}
 networks:
     default:
        external:
