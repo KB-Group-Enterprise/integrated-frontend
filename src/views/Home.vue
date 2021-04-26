@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home bg-gray-400">
     <img alt="Vue logo" src="../assets/logo.png" />
+    <Card></Card>
     <button @click="showBackEndStatus">Check Status Backend</button>
     <p>{{ status }}</p>
     <HelloWorld msg="Welcome to Your Vue.js App" />
@@ -10,10 +11,12 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
+import Card from '@/components/Card.vue';
 export default {
   name: 'Home',
   components: {
     HelloWorld,
+    Card,
   },
   data() {
     return {
