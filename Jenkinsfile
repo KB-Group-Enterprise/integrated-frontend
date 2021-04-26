@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        BACKEND_URL = credentials('backend_url')
+    }
     stages {
         stage('docker compose down') {
             steps {
