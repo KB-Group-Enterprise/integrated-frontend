@@ -1,10 +1,8 @@
 <template>
   <div class="home bg-gray-400">
-    <img alt="Vue logo" src="../assets/logo.png" />
     <Card></Card>
     <button @click="showBackEndStatus">Check Status Backend</button>
     <p>{{ status }}</p>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -23,6 +21,7 @@ export default {
   },
   methods: {
     async showBackEndStatus() {
+      console.log(process.env);
       const res = await this.getHttp('/api/health');
       this.status = res.data;
     },

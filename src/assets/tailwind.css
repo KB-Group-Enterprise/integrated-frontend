@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.h-navbar{
+    height: 10vh;
+}
