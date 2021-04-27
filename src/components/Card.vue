@@ -21,6 +21,7 @@
 <script>
 export default {
   name: 'Card',
+  props: ['car'],
 };
 </script>
 <style lang=""></style>

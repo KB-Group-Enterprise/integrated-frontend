@@ -17,6 +17,9 @@ module.exports = {
         slideOpen: 'slideTopToBottom 1s ease',
         slideClose: 'slideBottomToTop 1s ease',
       },
+      minHeight: {
+        content: '90vh',
+      },
     },
   },
   variants: {
