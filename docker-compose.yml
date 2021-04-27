@@ -1,13 +1,13 @@
 version: "3.8"
 services:
     frontend:
-        build: .
+        build: 
+         context: .
+         args:
+            BACKEND_URL: ${BACKEND_URL}
         image: frontend:production
         ports:
            - "80:80"
-        environment:
-           - NODE_ENV=production
-           - BACKEND_URL=${BACKEND_URL}
 networks:
     default:
        external:
