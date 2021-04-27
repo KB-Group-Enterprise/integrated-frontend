@@ -6,8 +6,7 @@
         <p>{{ status }}</p>
       </div>
       <Brands></Brands>
-
-      </div>
+    </div>
   </div>
 </template>
 
@@ -17,7 +16,6 @@ import Brands from '@/components/Brands.vue';
 export default {
   name: 'Home',
   components: {
-    // Card,
     Brands,
   },
   data() {

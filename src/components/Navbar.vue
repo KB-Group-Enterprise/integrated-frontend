@@ -22,6 +22,7 @@
       </svg>
     </div>
     <router-link to="/">Home</router-link>
+    <router-link to="/team">Team</router-link>
   </div>
   <div class="h-navbar flex w-full items-center relative">
     <div
@@ -32,8 +33,10 @@
       <div class="h-1 my-2 bg-black rounded-xl"></div>
       <div class="h-1 bg-black rounded-xl"></div>
     </div>
-    <div class="h-navbar hidden items-center lg:flex">
+    <div class="h-navbar hidden items-center justify-around lg:flex w-1/5">
       <router-link to="/">Home</router-link>
+      <router-link to="/team">Team</router-link>
+      <router-link to="/add">Add</router-link>
     </div>
   </div>
 </template>

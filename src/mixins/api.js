@@ -9,5 +9,13 @@ export default {
         console.error(e);
       }
     },
+    async postHttp(api, data) {
+      try {
+        const res = await axios.post(`${api}`, data);
+        return res;
+      } catch (e) {
+        console.error(e);
+      }
+    },
   },
 };
