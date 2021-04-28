@@ -1,6 +1,8 @@
 <template>
   <Navbar></Navbar>
-  <router-view />
+  <div class="relative position-content">
+    <router-view />
+  </div>
 </template>
 
 <script>

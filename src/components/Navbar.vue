@@ -24,7 +24,7 @@
     <router-link to="/">Home</router-link>
     <router-link to="/team">Team</router-link>
   </div>
-  <div class="h-navbar flex w-full items-center relative">
+  <div class="h-navbar flex w-full items-center bg-white fixed z-40">
     <div
       @click="openNavbar"
       class="w-9 h-auto flex flex-col p-1 absolute right-5 lg:hidden"

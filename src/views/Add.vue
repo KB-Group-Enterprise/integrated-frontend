@@ -1,8 +1,8 @@
 <template>
   <h1>Add Car</h1>
-  <form @submit.prevent="sendAPI">
-    <label for="brand">Brand: </label>
-    <input id="brand" v-model="brand" type="text" />
+  <form @submit.prevent="sendCar">
+    <label for="images">Upload Image</label>
+    <input @change="test" id="images" type="file" multiple />
     <input type="submit" />
   </form>
 </template>
@@ -11,19 +11,24 @@
 export default {
   data() {
     return {
-      brand: '',
+      images: [],
     };
   },
   methods: {
-    async sendAPI() {
-      const res = await this.postHttp('/api/brands', { name: this.brand });
+    test(e) {
+      this.images = e.target.files;
+    },
+    async sendCar() {
+      const formData = new FormData();
+      this.images.forEach((image) => formData.append('images', image));
+      const res = await this.postHttp('/api/test/img', formData);
       console.log(res);
     },
   },
 };
 </script>
 <style scoped>
-    input{
-        border: 2px solid black;
-    }
+input {
+  border: 2px solid black;
+}
 </style>
