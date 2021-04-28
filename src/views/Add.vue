@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <style scoped>
-    input{
-        border: 2px solid black;
-    }
+input {
+  border: 2px solid black;
+}
 </style>

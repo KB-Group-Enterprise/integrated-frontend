@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-col md:flex-row">
+  <div class="flex flex-col md:flex-row flex-wrap justify-between">
+    <Card v-for="car in cars" :key="car.id" :car="car"></Card>
+    <Card v-for="car in cars" :key="car.id" :car="car"></Card>
+    <Card v-for="car in cars" :key="car.id" :car="car"></Card>
     <Card v-for="car in cars" :key="car.id" :car="car"></Card>
   </div>
 </template>
