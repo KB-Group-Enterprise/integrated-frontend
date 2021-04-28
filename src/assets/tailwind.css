@@ -4,6 +4,9 @@
 
 @tailwind utilities;
 
-.h-navbar{
+.h-navbar {
     height: 10vh;
+}
+.position-content {
+    top: 10vh;
 }
