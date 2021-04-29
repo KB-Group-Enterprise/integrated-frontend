@@ -3,6 +3,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        primary: '#9CA3AF',
+        secondary: {
+          DEFAULT: '#FFFFFF',
+          one: '#14213D',
+        },
+      },
       keyframes: {
         slideTopToBottom: {
           '0%': { height: '0px' },

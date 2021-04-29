@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isShow"
-    class="bg-gray-400 h-screen w-full absolute flex flex-col z-50 items-center justify-center text-lg lg:hidden"
+    class="bg-primary h-screen w-full absolute flex flex-col z-50 items-center justify-center text-lg lg:hidden"
     :class="animationClass"
   >
     <div @click="closeNavbar" class="w-8 absolute right-5 top-5">
@@ -21,10 +21,11 @@
         ></path>
       </svg>
     </div>
-    <router-link to="/">Home</router-link>
-    <router-link to="/team">Team</router-link>
+    <router-link @click="closeNavbar" to="/">Home</router-link>
+    <router-link @click="closeNavbar" to="/team">Team</router-link>
+    <router-link @click="closeNavbar" to="/add">Add</router-link>
   </div>
-  <div class="h-navbar flex w-full items-center bg-white fixed z-40">
+  <div class="h-navbar flex w-full items-center bg-secondary fixed z-40">
     <div
       @click="openNavbar"
       class="w-9 h-auto flex flex-col p-1 absolute right-5 lg:hidden"
@@ -34,9 +35,9 @@
       <div class="h-1 bg-black rounded-xl"></div>
     </div>
     <div class="h-navbar hidden items-center justify-around lg:flex w-1/5">
-      <router-link to="/">Home</router-link>
-      <router-link to="/team">Team</router-link>
-      <router-link to="/add">Add</router-link>
+      <router-link @click="closeNavbar" to="/">Home</router-link>
+      <router-link @click="closeNavbar" to="/team">Team</router-link>
+      <router-link @click="closeNavbar" to="/add">Add</router-link>
     </div>
   </div>
 </template>
@@ -54,9 +55,11 @@ export default {
     openNavbar() {
       this.isShow = true;
       this.animationClass = 'animate-slideOpen';
+      document.body.style.overflow = 'hidden';
     },
     closeNavbar() {
       this.animationClass = 'animate-slideClose';
+      document.body.style.overflow = 'auto';
       setTimeout(() => (this.isShow = false), 650);
     },
   },
