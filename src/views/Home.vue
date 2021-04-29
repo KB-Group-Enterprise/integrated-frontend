@@ -1,10 +1,6 @@
 <template>
-  <div class="home bg-gray-400 min-h-content flex justify-center">
-    <div class="lg:container">
-      <div>
-        <button @click="showBackEndStatus">Check Status Backend</button>
-        <p>{{ status }}</p>
-      </div>
+  <div class="home bg-black min-h-content flex justify-center">
+    <div class="">
       <Brands></Brands>
     </div>
   </div>
