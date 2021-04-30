@@ -1,7 +1,8 @@
 FROM node:14.16.1-alpine3.10 as build
-COPY . /myfrontend
 WORKDIR /myfrontend
+COPY package*.json ./
 RUN npm install
+COPY . /myfrontend
 ARG BACKEND_URL
 ENV VUE_APP_BACKEND_URL $BACKEND_URL
 RUN npm run build

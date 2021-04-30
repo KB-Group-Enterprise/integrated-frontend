@@ -6,8 +6,6 @@ services:
          args:
             BACKEND_URL: ${BACKEND_URL}
         image: frontend:production
-        ports:
-           - "80:80"
 networks:
     default:
        external:
