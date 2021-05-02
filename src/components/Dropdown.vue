@@ -17,7 +17,7 @@
     <div class="hidden lg:flex justify-evenly">
       <div
         @click="selectedBrand = brand.name"
-        class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer hover:bg-gray-200"
+        class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer hover:bg-gray-200 active:bg-green-700"
         v-for="brand in brands"
         :key="brand.id"
       >

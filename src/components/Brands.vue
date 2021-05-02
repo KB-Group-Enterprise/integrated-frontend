@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <div class="w-2/3 bg-white">
+    <div class="w-10/12 bg-white">
       <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
       <CardContainer :cars="carsInBrand"></CardContainer>
     </div>
