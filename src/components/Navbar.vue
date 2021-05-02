@@ -24,6 +24,7 @@
     <router-link @click="closeNavbar" to="/">Home</router-link>
     <router-link @click="closeNavbar" to="/team">Team</router-link>
     <router-link @click="closeNavbar" to="/add">Add</router-link>
+    <router-link @click="closeNavbar" to="/update">Update</router-link>
   </div>
   <div class="h-navbar flex w-full items-center bg-secondary fixed z-40">
     <div
@@ -38,6 +39,7 @@
       <router-link @click="closeNavbar" to="/">Home</router-link>
       <router-link @click="closeNavbar" to="/team">Team</router-link>
       <router-link @click="closeNavbar" to="/add">Add</router-link>
+      <router-link @click="closeNavbar" to="/update">Update</router-link>
     </div>
   </div>
 </template>
