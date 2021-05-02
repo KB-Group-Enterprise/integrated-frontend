@@ -14,15 +14,37 @@
           <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
             Cartype
           </th>
+          <th
+            class="font-semibold text-sm uppercase px-6 py-4 text-center"
+          ></th>
+          <th
+            class="font-semibold text-sm uppercase px-6 py-4 text-center"
+          ></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-200">
-        <tr v-for="car in list" :key="car" @click="goToUpdate(car.id)">
+        <tr v-for="car in list" :key="car">
           <td>{{ car.id }}</td>
           <td>{{ car.name }}</td>
           <td>{{ car.price }}</td>
           <td>{{ car.brand.name }}</td>
           <td>{{ car.cartype.name }}</td>
+          <td>
+            <button
+              class="btn p-2 shadow bg-green-500"
+              @click="goToUpdate(car.id)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn p-2 shadow bg-red-500"
+              @click="deleteCar(car.id)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -47,6 +69,13 @@ export default {
     },
     goToUpdate(id) {
       this.$router.push(`/update/${id}`);
+    },
+    async deleteCar(id) {
+      const res = await this.deleteHttp(`/api/cars/${id}`);
+      console.log(res);
+      if (res) {
+        this.fetchData();
+      }
     },
   },
 };

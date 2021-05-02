@@ -25,6 +25,14 @@ export default {
         console.error(e);
       }
     },
+    async deleteHttp(api, data) {
+      try {
+        const res = await axios.delete(`${api}`, data);
+        return res;
+      } catch (e) {
+        console.error(e);
+      }
+    },
     getAxios() {
       return axios;
     },
