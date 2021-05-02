@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg-gray-400 min-h-content flex justify-center">
+  <div class="home min-h-content flex justify-center">
     <div class="lg:container">
       <div>
         <button @click="showBackEndStatus">Check Status Backend</button>

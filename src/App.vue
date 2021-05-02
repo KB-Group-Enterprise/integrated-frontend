@@ -1,6 +1,6 @@
 <template>
   <Navbar></Navbar>
-  <div class="relative position-content">
+  <div class="relative position-content bg-primary py-5">
     <router-view />
   </div>
 </template>

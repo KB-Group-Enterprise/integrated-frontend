@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isShow"
-    class="bg-primary h-screen w-full absolute flex flex-col z-50 items-center justify-center text-lg lg:hidden"
+    class="bg-primary h-screen w-full fixed flex flex-col z-50 items-center justify-center text-lg lg:hidden"
     :class="animationClass"
   >
     <div @click="closeNavbar" class="w-8 absolute right-5 top-5">
@@ -55,9 +55,9 @@ export default {
   },
   methods: {
     openNavbar() {
+      document.body.style.overflow = 'hidden';
       this.isShow = true;
       this.animationClass = 'animate-slideOpen';
-      document.body.style.overflow = 'hidden';
     },
     closeNavbar() {
       this.animationClass = 'animate-slideClose';
