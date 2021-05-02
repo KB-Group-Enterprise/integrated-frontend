@@ -19,12 +19,5 @@ export default {
       status: '',
     };
   },
-  methods: {
-    async showBackEndStatus() {
-      const res = await this.getHttp('/api/health');
-      console.log(res);
-      this.status = res.data;
-    },
-  },
 };
 </script>
