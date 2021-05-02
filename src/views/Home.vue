@@ -1,10 +1,6 @@
 <template>
-  <div class="home min-h-content flex justify-center">
-    <div class="lg:container">
-      <div>
-        <button @click="showBackEndStatus">Check Status Backend</button>
-        <p>{{ status }}</p>
-      </div>
+  <div class="home bg-black min-h-content flex justify-center">
+    <div class="">
       <Brands></Brands>
     </div>
   </div>
@@ -22,13 +18,6 @@ export default {
     return {
       status: '',
     };
-  },
-  methods: {
-    async showBackEndStatus() {
-      const res = await this.getHttp('/api/health');
-      console.log(res);
-      this.status = res.data;
-    },
   },
 };
 </script>

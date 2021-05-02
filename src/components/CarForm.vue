@@ -40,7 +40,6 @@
           @change="imageAdd"
           type="file"
           multiple
-          hidden
         />
       </div>
       <div class="flex m-3">

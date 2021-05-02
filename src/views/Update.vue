@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      const res = await this.getHttp('/api/cars/3');
+      const res = await this.getHttp(`/api/cars/${this.$route.params.id}`);
       if (res.status === 200) {
         this.car = await res.data;
         if (res.data.pictures.length > 0) {
@@ -26,8 +26,11 @@ export default {
         }
       }
     },
-    async putData(data) {
-      const res = await this.putHttp('/api/cars/3', data);
+    async putData(payload) {
+      const res = await this.putHttp(
+        `/api/cars/${this.$route.params.id}`,
+        payload
+      );
       console.log(res);
     },
     mapUrls(pics) {

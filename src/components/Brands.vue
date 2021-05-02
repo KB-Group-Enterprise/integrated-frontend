@@ -1,6 +1,10 @@
 <template>
-  <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
-  <CardContainer :cars="carsInBrand"></CardContainer>
+  <div class="flex justify-center">
+    <div class="w-10/12 bg-white">
+      <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
+      <CardContainer :cars="carsInBrand"></CardContainer>
+    </div>
+  </div>
 </template>
 
 <script>

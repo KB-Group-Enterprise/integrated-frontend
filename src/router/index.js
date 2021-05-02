@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import Add from '../views/Add.vue';
 import Update from '../views/Update.vue';
 import Team from '../views/Team.vue';
+import CarListTest from '../views/CarListTest.vue';
 const routes = [
   {
     path: '/',
@@ -15,9 +16,14 @@ const routes = [
     component: Add,
   },
   {
-    path: '/update',
+    path: '/update/:id',
     name: 'Update',
     component: Update,
+  },
+  {
+    path: '/test/list',
+    name: 'TestList',
+    component: CarListTest,
   },
   {
     path: '/team',

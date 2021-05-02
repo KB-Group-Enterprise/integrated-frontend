@@ -1,26 +1,28 @@
 <template>
-  <select
-    v-model="selectedBrand"
-    name="cars"
-    id="cars"
-    class="w-full outline-none py-3 text-xl lg:hidden"
-  >
-    <option
-      v-for="brand in brands"
-      :value="brand.name.toLowerCase()"
-      :key="brand.id"
+  <div class="mb-5">
+    <select
+      v-model="selectedBrand"
+      name="cars"
+      id="cars"
+      class="w-full outline-none py-3 text-xl lg:hidden"
     >
-      {{ brand.name }}
-    </option>
-  </select>
-  <div class="hidden lg:flex justify-evenly">
-    <div
-      @click="selectedBrand = brand.name"
-      class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer hover:bg-gray-200"
-      v-for="brand in brands"
-      :key="brand.id"
-    >
-      {{ brand.name }}
+      <option
+        v-for="brand in brands"
+        :value="brand.name.toLowerCase()"
+        :key="brand.id"
+      >
+        {{ brand.name }}
+      </option>
+    </select>
+    <div class="hidden lg:flex justify-evenly">
+      <div
+        @click="selectedBrand = brand.name"
+        class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer hover:bg-gray-200 active:bg-green-700"
+        v-for="brand in brands"
+        :key="brand.id"
+      >
+        {{ brand.name }}
+      </div>
     </div>
   </div>
 </template>
