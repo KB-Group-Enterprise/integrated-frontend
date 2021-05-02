@@ -17,5 +17,16 @@ export default {
         console.error(e);
       }
     },
+    async putHttp(api, data) {
+      try {
+        const res = await axios.put(`${api}`, data);
+        return res;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    getAxios() {
+      return axios;
+    },
   },
 };

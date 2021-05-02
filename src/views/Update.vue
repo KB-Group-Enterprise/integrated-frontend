@@ -1,0 +1,45 @@
+<template lang="html">
+  <car-form @save="putData" :origincar="car" :originimgurl="imgUrls"></car-form>
+</template>
+<script>
+import CarForm from '@/components/CarForm.vue';
+export default {
+  components: {
+    CarForm,
+  },
+  data() {
+    return {
+      car: null,
+      imgUrls: [],
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      const res = await this.getHttp('/api/cars/3');
+      if (res.status === 200) {
+        this.car = await res.data;
+        if (res.data.pictures.length > 0) {
+          this.mapUrls(res.data.pictures);
+        }
+      }
+    },
+    async putData(data) {
+      const res = await this.putHttp('/api/cars/3', data);
+      console.log(res);
+    },
+    mapUrls(pics) {
+      const BASE_URL = this.getAxios().defaults.baseURL;
+      let urls = [];
+      pics.forEach((pic) => {
+        const url = `${BASE_URL}/api/img/${pic.id}`;
+        urls.push(url);
+      });
+      this.imgUrls = urls;
+    },
+  },
+};
+</script>
+<style lang=""></style>
