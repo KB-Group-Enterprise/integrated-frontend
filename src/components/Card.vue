@@ -2,7 +2,7 @@
   <div class="relative bg-white py-6 px-6 hover:bg-gray-100">
     <div>
       <div>
-        <img class="w-full object-cover" :src="imageUrl" />
+        <img class="h-32 md:h-40 xl:h-60 w-full object-cover" :src="imageUrl" />
       </div>
       <p class="text-sm font-semibold mt-2">{{ car.brand.name }}</p>
       <p class="text-xl font-bold">{{ car.name }}</p>
