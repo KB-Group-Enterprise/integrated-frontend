@@ -1,142 +1,198 @@
 <template lang="html">
-  <section>
-    <h1>Add Car</h1>
-    <div class="m-2 p-3 w-48 border border-black">
-      <input type="checkbox" @change="autofill" />
-      <label class="ml-2">Autofill</label>
-    </div>
-    <div>
-      <h4>Preview</h4>
-      <template v-if="previews.length > 0">
-        <div class="flex rounded-md bg-gray-200 p-3 m-5">
+  <section class="w-screen flex justify-center">
+    <div class="w-10/12 bg-white mt-5 p-5 flex justify-center">
+      <div class="w-10/12">
+        <h1 class="text-3xl p-5">{{ title }}</h1>
+        <div class="m-2 p-3 w-48 border border-black">
+          <input type="checkbox" @change="autofill" />
+          <label class="ml-2">Autofill</label>
+        </div>
+        <div>
+          <h4>Preview</h4>
           <div
-            v-for="preview in previews"
-            :key="preview"
-            class="flex flex-col items-center"
+            class="flex rounded-md bg-gray-200 p-3 m-5"
+            style="height: 15rem"
           >
-            <img :src="preview" class="w-full object-cover m-2" />
-            <button
-              class="btn bg-red-500 p-2 shadow border w-10/12 text-white font-bold"
-              @click="deleteImg(previews.indexOf(preview))"
+            <div
+              v-for="preview in previews"
+              :key="preview"
+              class="flex flex-col items-center"
             >
-              Delete
+              <img :src="preview" class="w-full object-cover m-2" />
+              <button
+                class="btn bg-red-500 p-2 w-11/12 text-white font-bold"
+                @click="deleteImg(previews.indexOf(preview))"
+              >
+                X
+              </button>
+            </div>
+            <button
+              @click="chooseFiles()"
+              class="w-2/12 bg-white rounded hover:bg-gray-100 text-6xl font-bold"
+            >
+              +
             </button>
           </div>
-          <button
-            @click="chooseFiles()"
-            class="w-2/12 bg-white rounded hover:bg-gray-100 text-6xl font-bold"
-          >
-            +
-          </button>
         </div>
-      </template>
-    </div>
-    <form @submit.prevent="saveCar" class="flex flex-col w-8/12 m-5">
-      <div class="flex flex-col">
-        <label for="images">Upload Image : {{ addedImgs }} Images</label>
-        <input
-          id="fileUpload"
-          class="m-3"
-          @change="imageAdd"
-          type="file"
-          multiple
-        />
-      </div>
-      <div class="flex m-3">
-        <div
-          v-for="color in display_colors"
-          :key="color"
-          class="p-3 m-2 shadow rounded-md font-bold flex"
-          :style="{ backgroundColor: color.hex, color: color.hex }"
-        >
+
+        <form @submit.prevent="saveCar" class="flex flex-col w-10/12 m-5">
+          <div class="flex flex-col">
+            <label for="images">Upload Image : {{ addedImgs }} Images</label>
+            <input
+              id="fileUpload"
+              class="m-3 w-4/12"
+              :class="{ danger: errors.images }"
+              @change="imageAdd"
+              type="file"
+              multiple
+            />
+            <div v-if="errors.images" class="text-red-500 ml-5">
+              {{ errors.images }}
+            </div>
+          </div>
+          <div class="flex m-3">
+            <div
+              v-for="color in display_colors"
+              :key="color"
+              class="p-3 m-2 shadow rounded-md font-bold flex"
+              :style="{ backgroundColor: color.hex, color: color.hex }"
+            >
+              <input
+                type="checkbox"
+                name="color"
+                style="margin-top: 0.4rem"
+                @change="toggleInsert(color)"
+                :checked="getChecked(color)"
+              />
+              <label
+                for="color"
+                class="ml-2"
+                style="-webkit-filter: invert(100%); filter: invert(80%)"
+                >{{ color.name }}</label
+              ><br />
+            </div>
+          </div>
+          <div v-if="errors.colors" class="text-red-500 ml-5">
+            {{ errors.colors }}
+          </div>
+          <section class="grid grid-cols-2">
+            <div class="flex flex-col">
+              <label for="name">Name</label>
+              <input
+                class="m-3 w-10/12"
+                :class="{ danger: errors.name }"
+                id="name"
+                type="text"
+                v-model="car.name"
+              />
+              <div v-if="errors.name" class="text-red-500 ml-5">
+                {{ errors.name }}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="price">Price (THB)</label>
+              <input
+                class="m-3 w-10/12"
+                :class="{ danger: errors.price }"
+                id="price"
+                type="number"
+                v-model="car.price"
+              />
+              <div v-if="errors.price" class="text-red-500 ml-5">
+                {{ errors.price }}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="description">Description</label>
+              <input
+                class="m-3 w-10/12"
+                :class="{ danger: errors.description }"
+                id="description"
+                type="text"
+                v-model="car.description"
+              />
+              <div v-if="errors.description" class="text-red-500 ml-5">
+                {{ errors.description }}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="horsepower">Horsepower</label>
+              <input
+                class="m-3 w-10/12"
+                :class="{ danger: errors.horsepower }"
+                id="horsepower"
+                type="number"
+                v-model="car.horsepower"
+              />
+              <div v-if="errors.horsepower" class="text-red-500 ml-5">
+                {{ errors.horsepower }}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="releasedate">Release Date</label>
+              <input
+                class="m-3 w-10/12"
+                :class="{ danger: errors.releasedate }"
+                id="releasedate"
+                type="date"
+                v-model="car.releasedate"
+              />
+              <div v-if="errors.releasedate" class="text-red-500 ml-5">
+                {{ errors.releasedate }}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="releasedate">Brand</label>
+              <select
+                v-model="car.brand"
+                :class="{ danger: errors.brand }"
+                name="brand"
+                id="brand"
+                class="m-3 p-1 border border-black w-4/12"
+              >
+                <option
+                  :value="brand"
+                  v-for="brand in brands"
+                  :key="brand"
+                  @change="car.brand = brand"
+                >
+                  {{ brand.name }}
+                </option>
+              </select>
+              <div v-if="errors.brand" class="text-red-500 ml-5">
+                {{ errors.brand }}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="releasedate">Car Type</label>
+              <select
+                v-model="car.cartype"
+                :class="{ danger: errors.cartype }"
+                name="type"
+                id="type"
+                class="m-3 p-1 border border-black w-4/12"
+              >
+                <option
+                  v-for="cartype in cartypes"
+                  :value="cartype"
+                  :key="cartype"
+                  @change="car.brand = brand"
+                >
+                  {{ cartype.name }}
+                </option>
+              </select>
+              <div v-if="errors.cartype" class="text-red-500 ml-5">
+                {{ errors.cartype }}
+              </div>
+            </div>
+          </section>
           <input
-            type="checkbox"
-            name="color"
-            style="margin-top: 0.4rem"
-            @change="toggleInsert(color)"
-            :checked="getChecked(display_colors.indexOf(color))"
+            class="btn m-3 hover:bg-gray-100 cursor-pointer w-4/12"
+            type="submit"
           />
-          <label
-            for="color"
-            class="ml-2"
-            style="-webkit-filter: invert(100%); filter: invert(80%)"
-            >{{ color.name }}</label
-          ><br />
-        </div>
+        </form>
       </div>
-      <div class="flex flex-col">
-        <label for="name">Name</label>
-        <input class="m-3" id="name" type="text" v-model="car.name" />
-      </div>
-      <div class="flex flex-col">
-        <label for="price">Price (THB)</label>
-        <input class="m-3" id="price" type="number" v-model="car.price" />
-      </div>
-      <div class="flex flex-col">
-        <label for="description">Description</label>
-        <input
-          class="m-3"
-          id="description"
-          type="text"
-          v-model="car.description"
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="horsepower">Horsepower</label>
-        <input
-          class="m-3"
-          id="horsepower"
-          type="number"
-          v-model="car.horsepower"
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="releasedate">Release Date</label>
-        <input
-          class="m-3"
-          id="releasedate"
-          type="date"
-          v-model="car.releasedate"
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="releasedate">Brand</label>
-        <select
-          v-model="car.brand"
-          name="brand"
-          id="brand"
-          class="m-3 p-2 border border-black"
-        >
-          <option
-            :value="brand"
-            v-for="brand in brands"
-            :key="brand"
-            @change="car.brand = brand"
-          >
-            {{ brand.name }}
-          </option>
-        </select>
-      </div>
-      <div class="flex flex-col">
-        <label for="releasedate">Car Type</label>
-        <select
-          v-model="car.cartype"
-          name="type"
-          id="type"
-          class="m-3 p-2 border border-black"
-        >
-          <option
-            v-for="cartype in cartypes"
-            :value="cartype"
-            :key="cartype"
-            @change="car.brand = brand"
-          >
-            {{ cartype.name }}
-          </option>
-        </select>
-      </div>
-      <input class="m-3" type="submit" />
-    </form>
+    </div>
   </section>
 </template>
 
@@ -164,6 +220,12 @@ export default {
         return [];
       },
     },
+    title: {
+      type: String,
+      default: function () {
+        return 'Car Form';
+      },
+    },
   },
   data() {
     return {
@@ -185,6 +247,8 @@ export default {
       display_colors: [],
       isfilled: false,
       isImageUpdate: false,
+      errors: {},
+      danger: 'danger',
     };
   },
   computed: {
@@ -242,20 +306,22 @@ export default {
         console.log(this.car);
       }
     },
-    getChecked(index) {
-      const exist = this.car.colors[index];
+    getChecked(color) {
+      const exist = this.car.colors
+        .filter((carColor) => carColor.id === color.id)
+        .pop();
       if (exist) {
         return true;
       }
       return false;
     },
     toggleInsert(color) {
-      const exist = this.car.colors.filter((item) => item.id === color.id);
-      if (exist.length === 0) {
+      const existInCar = this.car.colors.filter((item) => item.id === color.id);
+      if (existInCar.length === 0) {
         const index = this.display_colors.indexOf(color);
         this.car.colors.push(this.original_colors[index]);
       } else {
-        this.car.colors.splice(this.car.colors.indexOf(exist[0]), 1);
+        this.car.colors.splice(this.car.colors.indexOf(existInCar[0]), 1);
       }
     },
     async fetchData() {
@@ -282,15 +348,89 @@ export default {
       this.isImageUpdate = true;
     },
     async saveCar() {
-      const formData = new FormData();
-      formData.append('car', JSON.stringify(this.car));
-      if (this.images.length > 0 && this.isImageUpdate) {
-        this.images.forEach((image) => formData.append('images', image));
+      if (this.carValidator()) {
+        const formData = new FormData();
+        formData.append('car', JSON.stringify(this.car));
+        if (this.images.length > 0 && this.isImageUpdate) {
+          this.images.forEach((image) => formData.append('images', image));
+        }
+        // this.$emit('save', formData);
       }
-      this.$emit('save', formData);
-      // console.log('formData', formData.getAll('images'));
-      // const res = await this.postHttp('/api/cars', formData);
-      // console.log(res);
+    },
+    carValidator() {
+      const rules = {
+        hasError: false,
+        errors: {},
+        name(name) {
+          if (name === '') {
+            const msg = 'Name is required';
+            rules.errors.name = msg;
+            rules.hasError = true;
+          }
+        },
+        price(price) {
+          if (price <= 0) {
+            const msg = 'Price must be higher than zero';
+            rules.errors.price = msg;
+            rules.hasError = true;
+          }
+        },
+        description(desc) {
+          if (desc === '') {
+            const msg = 'Description is required';
+            rules.errors.description = msg;
+            rules.hasError = true;
+          }
+        },
+        horsepower(hpw) {
+          if (hpw <= 0) {
+            const msg = 'Horse Power must be grater than zero';
+            rules.errors.horsepower = msg;
+            rules.hasError = true;
+          }
+        },
+        releasedate(date) {
+          if (date === '') {
+            const msg = 'Release Date is required';
+            rules.errors.releasedate = msg;
+            rules.hasError = true;
+          }
+        },
+        brand(brand) {
+          if (!brand.id) {
+            const msg = 'Brand is required';
+            rules.errors.brand = msg;
+            rules.hasError = true;
+          }
+        },
+        cartype(cartype) {
+          if (!cartype.id) {
+            const msg = 'Cartype is required';
+            rules.errors.cartype = msg;
+            rules.hasError = true;
+          }
+        },
+        colors(colors) {
+          if (colors.length < 1) {
+            const msg = 'Required at least one color';
+            rules.errors.colors = msg;
+            rules.hasError = true;
+          }
+        },
+      };
+      for (const key in this.car) {
+        if (Object.hasOwnProperty.call(this.car, key)) {
+          const value = this.car[key];
+          const validator = rules[key];
+          validator(value);
+        }
+      }
+      if (this.images.length < 1) {
+        rules.errors.images = 'require atleast 1 image';
+        rules.hasError = true;
+      }
+      this.errors = rules.errors;
+      return !rules.hasError;
     },
   },
 };
@@ -303,5 +443,8 @@ input {
 img {
   width: 200px;
   height: 150px;
+}
+.danger {
+  border: 1px solid red;
 }
 </style>

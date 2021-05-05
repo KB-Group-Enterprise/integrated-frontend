@@ -1,5 +1,5 @@
 <template lang="html">
-  <car-form @save="postData"></car-form>
+  <car-form @save="postData" title="ADD CAR"></car-form>
 </template>
 <script>
 import CarForm from '@/components/CarForm.vue';

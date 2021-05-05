@@ -1,5 +1,10 @@
 <template lang="html">
-  <car-form @save="putData" :origincar="car" :originimgurl="imgUrls"></car-form>
+  <car-form
+    @save="putData"
+    :origincar="car"
+    :originimgurl="imgUrls"
+    title="UPDATE CAR"
+  ></car-form>
 </template>
 <script>
 import CarForm from '@/components/CarForm.vue';
