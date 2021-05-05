@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="isShow"
-    class="bg-primary h-screen w-full fixed flex flex-col z-50 items-center justify-center text-lg lg:hidden"
+    class="bg-secondary h-screen w-full fixed flex flex-col z-50 items-center justify-center text-lg lg:hidden"
     :class="animationClass"
   >
     <div @click="closeNavbar" class="w-8 absolute right-5 top-5">

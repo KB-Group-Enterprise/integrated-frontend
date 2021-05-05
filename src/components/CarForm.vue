@@ -1,8 +1,10 @@
 <template lang="html">
-  <section class="w-screen flex justify-center">
-    <div class="w-10/12 bg-white mt-5 p-5 flex justify-center">
+  <section class="w-screen flex justify-center min-h-content">
+    <div class="w-10/12 bg-white p-1 lg:p-5 flex justify-center">
       <div class="w-10/12">
-        <h1 class="text-3xl p-5">{{ title }}</h1>
+        <div class="flex justify-between">
+          <h1 class="text-3xl my-5">{{ title }}</h1>
+        </div>
         <div class="m-2 p-3 w-48 border border-black">
           <input type="checkbox" @change="autofill" />
           <label class="ml-2">Autofill</label>
@@ -10,13 +12,12 @@
         <div>
           <h4>Preview</h4>
           <div
-            class="flex rounded-md bg-gray-200 p-3 m-5"
-            style="height: 15rem"
+            class="flex flex-wrap w-full rounded-md bg-gray-200 p-1 lg:p-3 lg:my-2"
           >
             <div
               v-for="preview in previews"
               :key="preview"
-              class="flex flex-col items-center"
+              class="flex flex-col items-center md:flex-wrap"
             >
               <img :src="preview" class="w-full object-cover m-2" />
               <button
@@ -28,19 +29,19 @@
             </div>
             <button
               @click="chooseFiles()"
-              class="w-2/12 bg-white rounded hover:bg-gray-100 text-6xl font-bold"
+              class="w-full m-2 p-3 md:w-1/6 lg:w-2/12 bg-white rounded hover:bg-gray-100 text-6xl font-bold"
             >
               +
             </button>
           </div>
         </div>
 
-        <form @submit.prevent="saveCar" class="flex flex-col w-10/12 m-5">
+        <form @submit="saveCar" class="flex flex-col w-10/12">
           <div class="flex flex-col">
             <label for="images">Upload Image : {{ addedImgs }} Images</label>
             <input
               id="fileUpload"
-              class="m-3 w-4/12"
+              class="m-3 w-full lg:w-4/12"
               :class="{ danger: errors.images }"
               @change="imageAdd"
               type="file"
@@ -50,7 +51,7 @@
               {{ errors.images }}
             </div>
           </div>
-          <div class="flex m-3">
+          <div class="flex flex-wrap">
             <div
               v-for="color in display_colors"
               :key="color"
@@ -75,7 +76,7 @@
           <div v-if="errors.colors" class="text-red-500 ml-5">
             {{ errors.colors }}
           </div>
-          <section class="grid grid-cols-2">
+          <section class="flex flex-col lg:grid lg:grid-cols-2">
             <div class="flex flex-col">
               <label for="name">Name</label>
               <input
@@ -148,7 +149,7 @@
                 :class="{ danger: errors.brand }"
                 name="brand"
                 id="brand"
-                class="m-3 p-1 border border-black w-4/12"
+                class="m-3 p-1 border border-black w-2/4 lg:w-4/12"
               >
                 <option
                   :value="brand"
@@ -170,7 +171,7 @@
                 :class="{ danger: errors.cartype }"
                 name="type"
                 id="type"
-                class="m-3 p-1 border border-black w-4/12"
+                class="m-3 p-1 border border-black w-2/4 lg:w-4/12"
               >
                 <option
                   v-for="cartype in cartypes"
@@ -187,8 +188,9 @@
             </div>
           </section>
           <input
-            class="btn m-3 hover:bg-gray-100 cursor-pointer w-4/12"
+            class="btn m-3 bg-black text-white hover:text-black hover:bg-gray-200 cursor-pointer w-4/12 h-10"
             type="submit"
+            :value="title"
           />
         </form>
       </div>
@@ -354,7 +356,7 @@ export default {
         if (this.images.length > 0 && this.isImageUpdate) {
           this.images.forEach((image) => formData.append('images', image));
         }
-        // this.$emit('save', formData);
+        this.$emit('save', formData);
       }
     },
     carValidator() {
@@ -430,7 +432,7 @@ export default {
         rules.hasError = true;
       }
       this.errors = rules.errors;
-      return !rules.hasError;
+      return rules.hasError;
     },
   },
 };

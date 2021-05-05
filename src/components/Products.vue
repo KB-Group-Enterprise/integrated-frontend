@@ -1,5 +1,8 @@
 <template>
-  <div class="flex w-full">
+  <div class="flex w-2/4 justify-evenly">
+    <button id="brandpage" class="bg-white" @click="componentName = 'brands'">
+      Products
+    </button>
     <button class="bg-white" @click="componentName = 'add'">Add +</button>
   </div>
   <keep-alive>

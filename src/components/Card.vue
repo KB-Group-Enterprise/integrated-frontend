@@ -3,11 +3,11 @@
     <div>
       <div>
         <div
-          class="h-32 md:h-40 xl:h-60 bg-gray-300 animate-pulse"
+          class="h-40 md:h-40 xl:h-60 bg-gray-300 animate-pulse"
           v-if="!isImageLoaded"
         ></div>
         <img
-          class="h-32 md:h-40 xl:h-60 w-full object-cover"
+          class="h-40 md:h-40 xl:h-60 w-full object-cover"
           :src="imageUrl"
           @load="isImageLoaded = true"
           v-show="isImageLoaded"
