@@ -2,10 +2,7 @@
   <div class="relative bg-white py-6 px-6 hover:bg-gray-100">
     <div>
       <div>
-        <img
-          class="w-full object-cover"
-          src="https://www.mercedes-benz.co.uk/passengercars/mercedes-benz-cars/models/cls/coupe-c257/amg/model-lines/_jcr_content/swipeableteaserbox/par/swipeableteaser_185438073/asset.MQ6.12.20191106114837.jpeg"
-        />
+        <img class="w-full object-cover" :src="imageUrl" />
       </div>
       <p class="text-sm font-semibold mt-2">{{ car.brand.name }}</p>
       <p class="text-xl font-bold">{{ car.name }}</p>
@@ -28,6 +25,10 @@ export default {
       });
       let newPrice = formatter.format(this.car.price);
       return newPrice;
+    },
+    imageUrl() {
+      const baseURL = this.getAxios().defaults.baseURL;
+      return `${baseURL}/api/img/${this.car.pictures[0].id}`;
     },
   },
 };

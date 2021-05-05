@@ -1,22 +1,18 @@
 <template>
   <div class="mb-5 pt-5">
     <select
-      v-model="selectedBrand"
+      v-model="selectedBrandId"
       name="cars"
       id="cars"
       class="w-full outline-none py-3 text-xl lg:hidden"
     >
-      <option
-        v-for="brand in brands"
-        :value="brand.name.toLowerCase()"
-        :key="brand.id"
-      >
+      <option v-for="brand in brands" :value="brand.id" :key="brand.id">
         {{ brand.name }}
       </option>
     </select>
     <div class="hidden lg:flex justify-evenly">
       <div
-        @click="selectedBrand = brand.name"
+        @click="selectedBrandId = brand.id"
         class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer hover:bg-gray-200 active:bg-green-700"
         v-for="brand in brands"
         :key="brand.id"
@@ -32,18 +28,18 @@ export default {
   name: 'drop-down',
   data() {
     return {
-      selectedBrand: '',
+      selectedBrandId: '',
       brands: [],
     };
   },
   async mounted() {
     const res = await this.getHttp('/api/brands');
     this.brands = res.data;
-    this.selectedBrand = this.brands[0].name.toLowerCase();
+    this.selectedBrandId = this.brands[0].id;
   },
   watch: {
-    selectedBrand() {
-      this.$emit('selected-brand', { brandName: this.selectedBrand });
+    selectedBrandId() {
+      this.$emit('selected-brand', this.selectedBrandId);
     },
   },
 };

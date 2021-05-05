@@ -1,6 +1,6 @@
 <template>
   <div class="home min-h-content flex justify-center">
-    <div class="">
+    <div class="w-full">
       <Products></Products>
     </div>
   </div>
