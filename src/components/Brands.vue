@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-center w-full">
     <div class="w-10/12 bg-white">
       <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
       <CardContainer :cars="carsInBrand"></CardContainer>
@@ -18,20 +18,18 @@ export default {
   },
   data() {
     return {
-      brandName: '',
+      brandId: '',
       carsInBrand: [],
     };
   },
   methods: {
-    setSelectedBrand({ brandName }) {
-      this.brandName = brandName;
+    setSelectedBrand(brandId) {
+      this.brandId = brandId;
     },
   },
   watch: {
-    async brandName() {
-      // const res = await this.getHttp(`/api/brands/${this.brandName}/cars`);
-      const res = await this.getHttp('/api/cars');
-      console.log(res);
+    async brandId() {
+      const res = await this.getHttp(`/api/cars/brand/${this.brandId}`);
       this.carsInBrand = res.data;
     },
   },
