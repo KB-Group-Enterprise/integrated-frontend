@@ -1,18 +1,18 @@
 <template>
-  <div class="home bg-black min-h-content flex justify-center">
+  <div class="home min-h-content flex justify-center">
     <div class="">
-      <Brands></Brands>
+      <Products></Products>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Brands from '@/components/Brands.vue';
+import Products from '@/components/Products.vue';
 export default {
   name: 'Home',
   components: {
-    Brands,
+    Products,
   },
   data() {
     return {
