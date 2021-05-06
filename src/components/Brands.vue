@@ -43,12 +43,18 @@ export default {
       const amount = 12;
       const sortBy = 'id';
       const direction = 'asc';
-      const { data } = await this.getHttp(
+      const res = await this.getHttp(
         `/api/cars/brand/${this.brandId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
       );
       this.currentPage = currentPage;
-      this.carsInBrand = data.list;
-      this.totalPage = data.total;
+      if (res) {
+        if (res.status === 200) {
+          this.carsInBrand = res.data.list;
+          this.totalPage = res.data.total;
+        }
+      } else {
+        this.carsInBrand = [];
+      }
     },
   },
   watch: {
