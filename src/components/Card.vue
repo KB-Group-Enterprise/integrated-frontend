@@ -1,5 +1,9 @@
 <template lang="html">
-  <div class="relative bg-white py-6 px-6 hover:bg-gray-100">
+  <div
+    class="relative p-6 bg-white hover:bg-gray-100"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+  >
     <div>
       <div>
         <div
@@ -36,7 +40,16 @@
           </p>
         </div>
       </div>
-      <div class="border-t-2 pb-10"></div>
+      <div class="border-t-2 pb-5"></div>
+      <div class="flex justify-center">
+        <div
+          class="mb-5 shadow w-11/12"
+          :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
+        >
+          <div class="border p-3 hover:bg-gray-100">Edit</div>
+          <div class="border p-3 hover:bg-gray-100">Delete</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -49,6 +62,7 @@ export default {
       isImageLoaded: false,
       currentImage: 0,
       currentImageUrl: ``,
+      hover: false,
     };
   },
   created() {
@@ -94,5 +108,36 @@ export default {
   background-color: gray;
   width: 0.5rem;
   height: 0.5rem;
+}
+.hoverDropDown {
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+  animation: fadeInBottom 0.5s ease-out;
+}
+.nonHoverDropDown {
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+  animation: fadeOutBottom 0.5s forwards ease-out;
+}
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOutBottom {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1rem);
+    display: none;
+  }
 }
 </style>
