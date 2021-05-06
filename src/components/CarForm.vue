@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <form @submit="saveCar" class="flex flex-col w-10/12">
+        <form @submit.prevent="saveCar" class="flex flex-col w-10/12">
           <div class="flex flex-col">
             <label for="images">Upload Image : {{ addedImgs }} Images</label>
             <input
@@ -424,7 +424,9 @@ export default {
         if (Object.hasOwnProperty.call(this.car, key)) {
           const value = this.car[key];
           const validator = rules[key];
-          validator(value);
+          if (validator) {
+            validator(value);
+          }
         }
       }
       if (this.images.length < 1) {
@@ -432,7 +434,7 @@ export default {
         rules.hasError = true;
       }
       this.errors = rules.errors;
-      return rules.hasError;
+      return !rules.hasError;
     },
   },
 };

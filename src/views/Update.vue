@@ -36,7 +36,13 @@ export default {
         `/api/cars/${this.$route.params.id}`,
         payload
       );
-      console.log(res);
+      if (res.status === 200) {
+        this.$store.dispatch('showToast', {
+          toastType: 'success',
+          msg: 'Update Successfull',
+        });
+        this.$store.commit('increment');
+      }
     },
     mapUrls(pics) {
       const BASE_URL = this.getAxios().defaults.baseURL;

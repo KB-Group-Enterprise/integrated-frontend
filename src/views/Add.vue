@@ -8,9 +8,15 @@ export default {
     CarForm,
   },
   methods: {
-    async postData(data) {
-      const res = await this.postHttp('/api/cars', data);
-      console.log(res);
+    async postData(payload) {
+      const res = await this.postHttp('/api/cars', payload);
+      if (res.status === 200) {
+        this.$store.dispatch('showToast', {
+          toastType: 'success',
+          msg: 'Car Added',
+        });
+        this.$store.commit('increment');
+      }
     },
   },
 };
