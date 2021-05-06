@@ -8,7 +8,7 @@
         ></div>
         <img
           class="h-40 md:h-40 xl:h-60 w-full object-cover"
-          :src="imageUrl"
+          :src="currentImageUrl"
           @load="isImageLoaded = true"
           v-show="isImageLoaded"
         />
@@ -20,7 +20,16 @@
           <div class="rounded-full my-2 bg-gray-300 h-3 w-2/6"></div>
         </div>
         <div v-else>
-          <p class="text-sm font-semibold mt-2">{{ car.brand.name }}</p>
+          <div class="flex justify-center pt-2">
+            <div v-for="(bullet, index) in car.pictures" :key="bullet.id">
+              <div
+                class="mx-1 rounded-full hover:bg-black"
+                @click="changeImage(index)"
+                :class="[isActive(index) ? 'active' : 'nonActive']"
+              ></div>
+            </div>
+          </div>
+          <p class="text-sm font-semibold">{{ car.brand.name }}</p>
           <p class="text-xl font-bold">{{ car.name }}</p>
           <p class="text-sm font-semibold mb-2 text-gray-500">
             {{ priceDetection }}.-
@@ -38,22 +47,52 @@ export default {
   data() {
     return {
       isImageLoaded: false,
+      currentImage: 0,
+      currentImageUrl: ``,
     };
+  },
+  created() {
+    this.currentImageUrl = this.getUrlFormat(0);
+  },
+  methods: {
+    isActive(index) {
+      if (index == this.currentImage) {
+        return true;
+      }
+      return false;
+    },
+    changeImage(index) {
+      this.currentImageUrl = this.getUrlFormat(index);
+      this.currentImage = index;
+    },
+    getUrlFormat(index) {
+      const baseURL = this.getAxios().defaults.baseURL;
+      return `${baseURL}/api/img/${this.car.pictures[index].id}`;
+    },
   },
   computed: {
     priceDetection() {
       var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'THB',
+        maximumFractionDigits: 0,
+        minimumFractionDigits: 0,
       });
       let newPrice = formatter.format(this.car.price);
       return newPrice;
     },
-    imageUrl() {
-      const baseURL = this.getAxios().defaults.baseURL;
-      return `${baseURL}/api/img/${this.car.pictures[0].id}`;
-    },
   },
 };
 </script>
-<style lang=""></style>
+<style lang="css">
+.active {
+  background-color: black;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.nonActive {
+  background-color: gray;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+</style>
