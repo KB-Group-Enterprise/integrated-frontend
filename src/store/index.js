@@ -7,6 +7,7 @@ export default createStore({
     msg: 'This is Toast',
     toastType: 'success',
     componentKey: 0,
+    isPageChanged: false,
   },
   mutations: {
     show(state, payload) {
@@ -21,6 +22,9 @@ export default createStore({
     increment(state) {
       state.componentKey += 1;
     },
+    setIsPageChanged(state, value) {
+      state.isPageChanged = value;
+    },
   },
   actions: {
     showToast(context, payload) {
@@ -32,6 +36,9 @@ export default createStore({
       setTimeout(() => {
         context.commit('hide');
       }, 2000);
+    },
+    changePage(context, value) {
+      context.commit('setIsPageChanged', value);
     },
   },
   modules: {},
