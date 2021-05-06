@@ -29,12 +29,12 @@ export default {
   data() {
     return {
       selectedBrandId: '',
-      brands: [],
+      brands: [{ id: 'all', name: 'All' }],
     };
   },
   async mounted() {
     const res = await this.getHttp('/api/brands');
-    this.brands = res.data;
+    this.brands = [...this.brands, ...res.data];
     this.selectedBrandId = this.brands[0].id;
   },
   watch: {

@@ -43,9 +43,16 @@ export default {
       const amount = 12;
       const sortBy = 'id';
       const direction = 'asc';
-      const res = await this.getHttp(
-        `/api/cars/brand/${this.brandId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
-      );
+      let res;
+      if (this.brandId === 'all') {
+        res = await this.getHttp(
+          `/api/cars/pages/${currentPage}/${amount}/${sortBy}/${direction}`
+        );
+      } else {
+        res = await this.getHttp(
+          `/api/cars/brand/${this.brandId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
+        );
+      }
       this.currentPage = currentPage;
       if (res) {
         if (res.status === 200) {
