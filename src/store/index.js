@@ -30,9 +30,9 @@ export default createStore({
     setDataInCard(state, payload) {
       state.dataInCard = payload;
     },
-    setCurrentDynamicComponent(state, brand){
+    setCurrentDynamicComponent(state, brand) {
       state.currentDynamicComponent = brand;
-    }
+    },
   },
   actions: {
     showToast(context, payload) {

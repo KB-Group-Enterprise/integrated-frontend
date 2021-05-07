@@ -2,7 +2,7 @@
   <div class="flex justify-center w-full">
     <div class="w-10/12 bg-white">
       <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
-      <CardContainer :cars="carsInBrand"></CardContainer>
+      <CardContainer @deletecar="deleteCar" :cars="carsInBrand" />
       <div class="flex justify-center my-5">
         <div class="flex flex-col justify-center items-center">
           <Pagination
@@ -61,6 +61,17 @@ export default {
         }
       } else {
         this.carsInBrand = [];
+      }
+    },
+    async deleteCar(carId) {
+      const res = await this.deleteHttp(`/api/cars/${carId}`);
+      if (res.status === 200) {
+        this.$store.dispatch('showToast', {
+          toastType: 'success',
+          msg: 'Car Deleted',
+        });
+        const carIndex = this.carsInBrand.findIndex((car) => car.id === carId);
+        this.carsInBrand.splice(carIndex, 1);
       }
     },
   },

@@ -16,6 +16,7 @@ export default {
           msg: 'Car Added',
         });
         this.$store.commit('increment');
+        this.$store.dispatch('changeDynamicComponent', 'brands');
       }
     },
   },

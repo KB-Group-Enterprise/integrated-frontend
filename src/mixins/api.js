@@ -25,9 +25,9 @@ export default {
         console.error(e);
       }
     },
-    async deleteHttp(api, data) {
+    async deleteHttp(api) {
       try {
-        const res = await axios.delete(`${api}`, data);
+        const res = await axios.delete(`${api}`);
         return res;
       } catch (e) {
         console.error(e);

@@ -46,8 +46,18 @@
           class="mb-5 shadow w-11/12"
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
-          <div @click="edit" class="border p-3 cursor-pointer hover:bg-gray-100">Edit</div>
-          <div class="border p-3 hover:bg-gray-100 cursor-pointer">Delete</div>
+          <div
+            @click="edit"
+            class="border p-3 cursor-pointer hover:bg-gray-100"
+          >
+            Edit
+          </div>
+          <div
+            @click="deleteCar"
+            class="border p-3 hover:bg-gray-100 cursor-pointer"
+          >
+            Delete
+          </div>
         </div>
       </div>
     </div>
@@ -86,6 +96,9 @@ export default {
     edit() {
       this.$store.dispatch('insertDataForEdit', this.car.id);
       this.$store.dispatch('changeDynamicComponent', 'update');
+    },
+    deleteCar() {
+      this.$emit('deletecar', this.car.id);
     },
   },
   computed: {
