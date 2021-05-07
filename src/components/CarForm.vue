@@ -10,9 +10,9 @@
           <label class="ml-2">Autofill</label>
         </div>
         <div>
-          <h4>Preview</h4>
+          <h4 class="p-3">Preview</h4>
           <div
-            class="flex flex-wrap w-full rounded-md bg-gray-200 p-1 lg:p-3 lg:my-2"
+            class="flex flex-wrap w-full border border-gray-200 p-1 lg:p-3 lg:my-2"
           >
             <div
               v-for="preview in previews"
@@ -24,53 +24,59 @@
                 class="btn bg-red-500 p-2 w-11/12 text-white font-bold"
                 @click="deleteImg(previews.indexOf(preview))"
               >
-                X
+                DELETE
               </button>
             </div>
             <button
               @click="chooseFiles()"
-              class="w-full m-2 p-3 md:w-1/6 lg:w-2/12 bg-white rounded hover:bg-gray-100 text-6xl font-bold"
+              class="w-full m-2 p-3 md:w-4/12 lg:w-60 h-48 bg-white border border-gray-200 hover:bg-gray-200 text-6xl font-bold"
             >
               +
             </button>
           </div>
         </div>
-
+        <div class="flex">
+          <div class="p-3 text-white font-bold bg-gray-800">Uploaded</div>
+          <div class="p-3 border border-gray-200 font-bold">
+            <span class="text-green-800">{{ addedImgs }}</span> Images
+          </div>
+        </div>
         <form @submit.prevent="saveCar" class="flex flex-col w-10/12">
           <div class="flex flex-col">
-            <label for="images">Upload Image : {{ addedImgs }} Images</label>
             <input
               id="fileUpload"
               class="m-3 w-full lg:w-4/12"
               :class="{ danger: errors.images }"
               @change="imageAdd"
               type="file"
-              multiple
+              hidden
             />
             <div v-if="errors.images" class="text-red-500 ml-5">
               {{ errors.images }}
             </div>
           </div>
-          <div class="flex flex-wrap">
+          <label for="colors" class="mt-5 mb-3">Pick Color</label>
+          <div class="flex flex-wrap mb-5">
             <div
               v-for="color in display_colors"
               :key="color"
-              class="p-3 m-2 shadow rounded-md font-bold flex"
-              :style="{ backgroundColor: color.hex, color: color.hex }"
+              class="font-bold flex border border-gray-200 mr-5 mb-5"
             >
-              <input
-                type="checkbox"
-                name="color"
-                style="margin-top: 0.4rem"
-                @change="toggleInsert(color)"
-                :checked="getChecked(color)"
-              />
-              <label
-                for="color"
-                class="ml-2"
-                style="-webkit-filter: invert(100%); filter: invert(80%)"
-                >{{ color.name }}</label
-              ><br />
+              <div
+                class="w-14 h-full flex justify-center p-4 pt-3.5 border border-gray-200 border-l-0 border-t-0 border-b-0"
+                :style="{ backgroundColor: color.hex, color: color.hex }"
+              >
+                <input
+                  type="checkbox"
+                  name="color"
+                  style="margin-top: 0.4rem"
+                  @change="toggleInsert(color)"
+                  :checked="getChecked(color)"
+                />
+              </div>
+              <div class="p-3 pt-3.5 w-20">
+                {{ capitalize(color.name) }}
+              </div>
             </div>
           </div>
           <div v-if="errors.colors" class="text-red-500 ml-5">
@@ -80,7 +86,7 @@
             <div class="flex flex-col">
               <label for="name">Name</label>
               <input
-                class="m-3 w-10/12"
+                class="m-3 w-10/12 p-3"
                 :class="{ danger: errors.name }"
                 id="name"
                 type="text"
@@ -188,9 +194,9 @@
             </div>
           </section>
           <input
-            class="btn m-3 bg-black text-white hover:text-black hover:bg-gray-200 cursor-pointer w-4/12 h-10"
+            class="btn m-3 bg-black text-white hover:bg-gray-800 cursor-pointer w-4/12 h-10 font-bold"
             type="submit"
-            :value="title"
+            value="Submit"
           />
         </form>
       </div>
@@ -345,9 +351,26 @@ export default {
     },
     imageAdd(event) {
       const file = event.target.files[0];
-      this.images.push(file);
-      this.previews.push(URL.createObjectURL(file));
-      this.isImageUpdate = true;
+      console.log(file);
+      if (file) {
+        if (file.type === 'image/png' || file.type == 'image/jpeg') {
+          if (file.size <= 5 * 5000000) {
+            this.images.push(file);
+            this.previews.push(URL.createObjectURL(file));
+            this.isImageUpdate = true;
+          } else {
+            this.$store.dispatch('showToast', {
+              toastType: 'error',
+              msg: 'File Exceeded 5MB',
+            });
+          }
+        } else {
+          this.$store.dispatch('showToast', {
+            toastType: 'error',
+            msg: 'MediaType Not Supported',
+          });
+        }
+      }
     },
     async saveCar() {
       if (this.carValidator()) {
@@ -436,13 +459,20 @@ export default {
       this.errors = rules.errors;
       return !rules.hasError;
     },
+    capitalize(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    },
   },
 };
 </script>
 <style scoped>
 input {
-  border: 1px solid black;
-  padding: 2px;
+  border: 1px solid lightgray;
+  padding: 0.5rem;
+}
+select {
+  border: 1px solid lightgray;
+  padding: 0.5rem;
 }
 img {
   width: 200px;
