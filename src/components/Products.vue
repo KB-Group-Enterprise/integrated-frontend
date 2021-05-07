@@ -3,11 +3,13 @@
     <button
       id="brandpage"
       class="bg-white p-4"
-      @click="componentName = 'brands'"
+      @click="changeDynamicComponent('brands')"
     >
       Products
     </button>
-    <button class="bg-white p-4" @click="componentName = 'add'">Add +</button>
+    <button class="bg-white p-4" @click="changeDynamicComponent('add')">
+      Add +
+    </button>
   </div>
   <keep-alive>
     <component :is="currentComponent"></component>
@@ -17,20 +19,31 @@
 <script>
 import Brands from '@/components/Brands';
 import Add from '@/views/Add.vue';
+import Update from '@/views/Update.vue';
+import { mapState } from 'vuex';
 export default {
   name: 'Products',
   components: {
     Brands,
     Add,
-  },
-  data() {
-    return {
-      componentName: 'brands',
-    };
+    Update,
   },
   computed: {
     currentComponent() {
-      return this.componentName;
+      return this.$store.state.currentDynamicComponent;
+    },
+    ...mapState(['currentDynamicComponent']),
+  },
+  watch: {
+    currentDynamicComponent(newValue) {
+      if (newValue != 'update') {
+        this.$store.dispatch('insertDataForEdit', null);
+      }
+    },
+  },
+  methods: {
+    changeDynamicComponent(componentName) {
+      this.$store.dispatch('changeDynamicComponent', componentName);
     },
   },
 };

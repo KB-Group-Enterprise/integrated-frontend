@@ -8,6 +8,8 @@ export default createStore({
     toastType: 'success',
     componentKey: 0,
     isPageChanged: false,
+    dataInCard: null,
+    currentDynamicComponent: 'brands',
   },
   mutations: {
     show(state, payload) {
@@ -25,6 +27,12 @@ export default createStore({
     setIsPageChanged(state, value) {
       state.isPageChanged = value;
     },
+    setDataInCard(state, payload) {
+      state.dataInCard = payload;
+    },
+    setCurrentDynamicComponent(state, brand){
+      state.currentDynamicComponent = brand;
+    }
   },
   actions: {
     showToast(context, payload) {
@@ -39,6 +47,12 @@ export default createStore({
     },
     changePage(context, value) {
       context.commit('setIsPageChanged', value);
+    },
+    insertDataForEdit(context, payload) {
+      context.commit('setDataInCard', payload);
+    },
+    changeDynamicComponent(context, value) {
+      context.commit('setCurrentDynamicComponent', value);
     },
   },
   modules: {},

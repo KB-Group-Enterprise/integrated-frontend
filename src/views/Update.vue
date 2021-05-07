@@ -3,11 +3,13 @@
     @save="putData"
     :origincar="car"
     :originimgurl="imgUrls"
+    :key="$store.state.dataInCard"
     title="UPDATE CAR"
   ></car-form>
 </template>
 <script>
 import CarForm from '@/components/CarForm.vue';
+import { mapState } from 'vuex';
 export default {
   components: {
     CarForm,
@@ -21,9 +23,20 @@ export default {
   mounted() {
     this.fetchData();
   },
+  computed: mapState(['currentDynamicComponent']),
+  watch: {
+    currentDynamicComponent() {
+      if (this.$store.state.currentDynamicComponent == 'update') {
+        this.fetchData();
+      }
+      this.imgUrls = [];
+    },
+  },
   methods: {
     async fetchData() {
-      const res = await this.getHttp(`/api/cars/${this.$route.params.id}`);
+      const res = await this.getHttp(
+        `/api/cars/${this.$store.state.dataInCard}`
+      );
       if (res.status === 200) {
         this.car = await res.data;
         if (res.data.pictures.length > 0) {
@@ -33,7 +46,7 @@ export default {
     },
     async putData(payload) {
       const res = await this.putHttp(
-        `/api/cars/${this.$route.params.id}`,
+        `/api/cars/${this.$store.state.dataInCard}`,
         payload
       );
       if (res.status === 200) {
@@ -42,6 +55,10 @@ export default {
           msg: 'Update Successfull',
         });
         this.$store.commit('increment');
+        this.car = null;
+        this.imgUrls = [];
+        this.$store.dispatch('insertDataForEdit', null);
+        this.$store.dispatch('changeDynamicComponent', 'brands');
       }
     },
     mapUrls(pics) {

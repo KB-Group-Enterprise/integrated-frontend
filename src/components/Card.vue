@@ -46,8 +46,8 @@
           class="mb-5 shadow w-11/12"
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
-          <div class="border p-3 hover:bg-gray-100">Edit</div>
-          <div class="border p-3 hover:bg-gray-100">Delete</div>
+          <div @click="edit" class="border p-3 cursor-pointer hover:bg-gray-100">Edit</div>
+          <div class="border p-3 hover:bg-gray-100 cursor-pointer">Delete</div>
         </div>
       </div>
     </div>
@@ -82,6 +82,10 @@ export default {
     getUrlFormat(index) {
       const baseURL = this.getAxios().defaults.baseURL;
       return `${baseURL}/api/img/${this.car.pictures[index].id}`;
+    },
+    edit() {
+      this.$store.dispatch('insertDataForEdit', this.car.id);
+      this.$store.dispatch('changeDynamicComponent', 'update');
     },
   },
   computed: {
