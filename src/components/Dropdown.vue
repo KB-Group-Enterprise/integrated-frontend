@@ -14,6 +14,7 @@
       <div
         @click="selectedBrandId = brand.id"
         class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer hover:bg-gray-200"
+        :class="[selectedBrandId === brand.id ? 'bg-gray-200' : '']"
         v-for="brand in brands"
         :key="brand.id"
       >
