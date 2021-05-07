@@ -25,7 +25,10 @@
     <router-link @click="closeNavbar" to="/team">Team</router-link>
     <router-link @click="closeNavbar" to="/add">Add</router-link>
   </div>
-  <div class="h-navbar flex w-full items-center bg-secondary fixed z-40">
+  <div
+    class="transition-all duration-150 ease-in-out flex w-full items-center bg-secondary fixed z-40"
+    :class="[isScrolled ? 'h-16' : 'h-navbar']"
+  >
     <div
       @click="openNavbar"
       class="w-9 h-auto flex flex-col p-1 absolute right-5 lg:hidden"
@@ -34,7 +37,7 @@
       <div class="h-1 my-2 bg-black rounded-xl"></div>
       <div class="h-1 bg-black rounded-xl"></div>
     </div>
-    <div class="h-navbar hidden items-center justify-around lg:flex w-1/5">
+    <div class="hidden items-center justify-around lg:flex w-1/5">
       <router-link @click="closeNavbar" to="/">Home</router-link>
       <router-link @click="closeNavbar" to="/team">Team</router-link>
       <router-link @click="closeNavbar" to="/add">Add</router-link>
@@ -50,9 +53,23 @@ export default {
     return {
       isShow: false,
       animationClass: '',
+      isScrolled: false,
     };
   },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
+    handleScroll() {
+      if (window.scrollY > 200) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
+    },
     openNavbar() {
       document.body.style.overflow = 'hidden';
       this.isShow = true;
@@ -66,3 +83,5 @@ export default {
   },
 };
 </script>
+<style lang="css">
+</style>
