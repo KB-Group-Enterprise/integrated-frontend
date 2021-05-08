@@ -17,20 +17,6 @@
         d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
       ></path>
     </svg>
-    <!-- <div
-      @click="currentPage = i"
-      v-for="i in 3"
-      :key="i"
-      class="bg-primary text-white mx-2 p-1 px-3"
-    >
-      {{ i }}
-    </div> -->
-    <!-- <input
-      type="text"
-      v-model="currentPage"
-      class="w-1/6 text-center text-xl"
-
-    /> -->
     <div class="w-1/6 text-xl text-center flex items-center justify-center">
       {{ currentPage }}
     </div>
@@ -70,9 +56,6 @@ export default {
     previous() {
       this.currentPage--;
     },
-  },
-  mounted() {
-    this.$emit('changepage', this.currentPage - 1);
   },
   computed: mapState(['isPageChanged']),
   watch: {
