@@ -463,7 +463,13 @@ export default {
       if (!rules.errors.name) {
         const res = await this.getHttp(`/api/cars/namecheck/${this.car.name}`);
         if (res.status === 200 && res.data) {
-          if (!this.car.id) {
+          if (this.car.id) {
+            const resCar = await this.getHttp(`/api/cars/${this.car.id}`);
+            if (resCar.data.name !== this.car.name) {
+              rules.errors.nameExist = 'Name Already Exist';
+              rules.hasError = true;
+            }
+          } else {
             rules.errors.nameExist = 'Name Already Exist';
             rules.hasError = true;
           }
