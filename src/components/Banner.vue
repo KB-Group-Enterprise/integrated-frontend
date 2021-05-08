@@ -46,7 +46,7 @@
         <div
           class="h-full object-cover"
           style="
-            background-image: url(https://www.hyundai.com/content/hyundai/ww/data/news/data/2021/0000016609/image/newsroom-0112-photo-1-2021elantranline-1120x745.jpg);
+            background-image: url(https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.18169-9/15027755_1021714127940812_5474934815382516020_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=174925&_nc_eui2=AeHTsBS59jH1D8EJ5vToUNlGnPE-By3rMoqc8T4HLesyisaWgSXUwFsr4qsMJm-oEl6PEUS4rBnH6wf34L1GYbFR&_nc_ohc=-TeagCFfXb4AX_sVFzY&_nc_ht=scontent.fbkk13-2.fna&oh=18d71865b8ae988087166f3874f92511&oe=60BC4888);
           "
         >
           <div class="h-full bg-black opacity-25"></div>
