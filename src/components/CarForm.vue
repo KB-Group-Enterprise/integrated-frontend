@@ -1,7 +1,7 @@
 <template lang="html">
   <section class="w-full flex justify-center min-h-content">
     <div class="w-10/12 bg-white flex justify-center">
-      <div class="w-10/12">
+      <div class="w-10/12 load">
         <div class="flex justify-between">
           <h1 class="text-3xl my-5">{{ title }}</h1>
         </div>
@@ -21,7 +21,7 @@
             >
               <img :src="preview" class="w-full object-cover m-2" />
               <button
-                class="btn bg-red-500 p-2 w-11/12 text-white font-bold"
+                class="btn border border-red-500 p-2 w-11/12 text-red-500 font-bold"
                 @click="deleteImg(previews.indexOf(preview))"
               >
                 DELETE
@@ -114,8 +114,8 @@
             </div>
             <div class="flex flex-col">
               <label for="description">Description</label>
-              <input
-                class="m-3 w-10/12"
+              <textarea
+                class="m-3 w-10/12 h-20 p-2 border border-gray-300"
                 :class="{ danger: errors.description }"
                 id="description"
                 type="text"

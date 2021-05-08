@@ -27,4 +27,18 @@ export default {
 body {
   font-family: 'Roboto', sans-serif !important;
 }
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.load {
+  opacity: 0;
+  animation: fadeInBottom 0.5s ease-in-out forwards;
+}
 </style>
