@@ -78,7 +78,7 @@ export default {
   width: 0%;
   content: '';
   height: 2px;
-  transition: all 0.4s;
+  transition: all 0.2s;
 }
 
 .xkb:hover::after {
