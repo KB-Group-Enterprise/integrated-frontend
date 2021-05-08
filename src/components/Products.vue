@@ -2,7 +2,7 @@
   <div class="flex justify-center">
     <div class="flex w-10/12 bg-white">
       <div class="flex w-full">
-        <div class=" w-full flex justify-center">
+        <div class="w-full flex justify-center">
           <div
             id="brandpage"
             class="bg-white p-4 w-1/2 text-center text-xl"

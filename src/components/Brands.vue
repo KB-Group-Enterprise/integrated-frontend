@@ -36,7 +36,7 @@ export default {
     CardContainer,
     Pagination,
     CarType,
-    Banner
+    Banner,
   },
   data() {
     return {
