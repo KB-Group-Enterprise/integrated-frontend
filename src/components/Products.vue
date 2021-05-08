@@ -3,13 +3,13 @@
     <div class="flex w-10/12">
       <div
         id="brandpage"
-        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb"
+        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb hoverbold"
         @click="changeDynamicComponent('brands')"
       >
         PRODUCT
       </div>
       <div
-        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb"
+        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb hoverbold"
         @click="changeDynamicComponent('add')"
       >
         ADD
@@ -83,5 +83,8 @@ export default {
 
 .xkb:hover::after {
   width: 100%;
+}
+.hoverbold:hover {
+  font-weight: 600;
 }
 </style>

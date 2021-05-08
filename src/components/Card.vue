@@ -1,7 +1,10 @@
 <template lang="html">
   <div
     class="relative p-6 bg-white hover:bg-gray-100"
-    @mouseover="hover = true"
+    @mouseover="
+      hover = true;
+      isLoading = true;
+    "
     @mouseleave="hover = false"
   >
     <div>
@@ -44,6 +47,7 @@
       <div class="flex justify-center">
         <div
           class="mb-5 shadow w-11/12"
+          v-if="isLoading"
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
           <div
@@ -73,6 +77,7 @@ export default {
       currentImage: 0,
       currentImageUrl: ``,
       hover: false,
+      isLoading: false,
     };
   },
   created() {
