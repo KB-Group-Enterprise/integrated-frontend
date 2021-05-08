@@ -1,11 +1,11 @@
 <template>
   <div class="flex justify-center w-full">
     <div class="w-10/12 bg-white">
-      <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
+      <Dropdown class="load" @selected-brand="setSelectedBrand"></Dropdown>
       <div class="grid grid-cols-12">
-        <CarType class="col-span-3"></CarType>
+        <CarType class="col-span-3 load"></CarType>
         <CardContainer
-          class="col-span-9"
+          class="col-span-9 load"
           @deletecar="deleteCar"
           :cars="carsInBrand"
         />
