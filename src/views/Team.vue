@@ -3,12 +3,12 @@
     <h1 class="text-center mb-5 font-bold text-3xl">Team</h1>
     <div class="flex justify-center w-full">
       <div
-        class="flex flex-col lg:flex-row lg:flex-wrap items-center lg:justify-center lg:items-start bg-white p-10"
+        class="flex flex-col lg:flex-row lg:flex-wrap items-center lg:justify-center lg:items-start bg-white p-0 md:p-5 lg:p-10"
       >
         <div
           v-for="member in members"
           :key="member.name"
-          class="fadeIn border border-gray-200 bg-white my-5 p-5 w-6/12 md:w-5/12 lg:w-1/4 lg:mx-5 2xl:w-1/5"
+          class="fadeIn border border-gray-200 bg-white my-5 p-3 lg:p-5 w-10/12 md:w-5/12 lg:w-1/4 lg:mx-5 2xl:w-1/5"
           :class="member.class"
         >
           <img
