@@ -17,7 +17,7 @@
             <div
               v-for="preview in previews"
               :key="preview"
-              class="flex flex-col items-center md:flex-wrap"
+              class="flex flex-col items-center md:flex-wrap img-load"
             >
               <img :src="preview" class="w-full object-cover m-2" />
               <button
@@ -486,6 +486,19 @@ export default {
 };
 </script>
 <style scoped>
+@keyframes fadeInleft {
+  from {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.img-load {
+  opacity: 0;
+  animation: fadeInleft 1s forwards ease-in-out;
+}
 input {
   border: 1px solid lightgray;
   padding: 0.5rem;

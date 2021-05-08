@@ -1,6 +1,7 @@
 <template>
   <div class="flex justify-center w-full">
     <div class="w-10/12 bg-white">
+      <banner></banner>
       <Dropdown class="load" @selected-brand="setSelectedBrand"></Dropdown>
       <div class="grid grid-cols-12">
         <CarType class="col-span-3 load"></CarType>
@@ -27,6 +28,7 @@ import Dropdown from '@/components/Dropdown.vue';
 import CardContainer from '@/components/CardContainer.vue';
 import Pagination from '@/components/Pagination.vue';
 import CarType from '@/components/CarType.vue';
+import Banner from '@/components/Banner.vue';
 export default {
   name: 'brands',
   components: {
@@ -34,6 +36,7 @@ export default {
     CardContainer,
     Pagination,
     CarType,
+    Banner
   },
   data() {
     return {
