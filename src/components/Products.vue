@@ -3,14 +3,26 @@
     <div class="flex w-10/12">
       <div
         id="brandpage"
-        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb hoverbold"
+        class="bg-white p-4 w-full text-center text-xl"
         @click="changeDynamicComponent('brands')"
+        :class="{
+          'border-b-2 border-black font-bold':
+            $store.state.currentDynamicComponent === 'brands',
+          'xkb hover:font-black':
+            $store.state.currentDynamicComponent !== 'brands',
+        }"
       >
         PRODUCT
       </div>
       <div
-        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb hoverbold"
+        class="bg-white p-4 w-full text-center text-xl"
         @click="changeDynamicComponent('add')"
+        :class="{
+          'border-b-2 border-black font-bold':
+            $store.state.currentDynamicComponent === 'add',
+          'xkb hover:font-black':
+            $store.state.currentDynamicComponent !== 'add',
+        }"
       >
         ADD
       </div>
@@ -54,15 +66,9 @@ export default {
 };
 </script>
 <style>
-  .xkb {
+.xkb {
   color: #000000;
-  font-size: 1.1em;
   position: relative;
-}
-
-.xkb:hover {
-  color: #000000;
-  font-weight: 500;
 }
 
 .xkb::after {
@@ -83,8 +89,5 @@ export default {
 
 .xkb:hover::after {
   width: 100%;
-}
-.hoverbold:hover {
-  font-weight: 600;
 }
 </style>
