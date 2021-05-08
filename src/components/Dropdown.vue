@@ -13,8 +13,11 @@
     <div class="hidden lg:flex justify-evenly">
       <div
         @click="selectedBrandId = brand.id"
-        class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer xkb hoverbold"
-        :class="[selectedBrandId === brand.id ? 'font-bold' : '']"
+        class="bg-white p-3 flex-1 mx-3 flex justify-center items-center text-center cursor-pointer"
+        :class="{
+          'border-b-2 border-black font-bold': selectedBrandId == brand.id,
+          'xkb hover:font-black': selectedBrandId !== brand.id,
+        }"
         v-for="brand in brands"
         :key="brand.id"
       >
