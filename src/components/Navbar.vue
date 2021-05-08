@@ -24,7 +24,14 @@
     <div
       class="flex flex-col justify-between items-center h-1/3 font-bold text-2xl"
     >
-      <router-link @click="closeNavbar" to="/">Home</router-link>
+      <router-link
+        @click="
+          closeNavbar();
+          $store.dispatch('changeDynamicComponent', 'brands');
+        "
+        to="/"
+        >Home</router-link
+      >
       <router-link @click="closeNavbar" to="/team">Team</router-link>
       <router-link @click="closeNavbar" to="/add">Add</router-link>
     </div>
