@@ -1,15 +1,20 @@
 <template>
-  <div class="flex w-2/4 justify-evenly">
-    <button
-      id="brandpage"
-      class="bg-white p-4"
-      @click="changeDynamicComponent('brands')"
-    >
-      Products
-    </button>
-    <button class="bg-white p-4" @click="changeDynamicComponent('add')">
-      Add +
-    </button>
+  <div class="flex justify-center">
+    <div class="flex w-10/12">
+      <div
+        id="brandpage"
+        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb"
+        @click="changeDynamicComponent('brands')"
+      >
+        PRODUCT
+      </div>
+      <div
+        class="bg-white p-4 w-full bg-white text-center font-bold text-xl xkb"
+        @click="changeDynamicComponent('add')"
+      >
+        ADD
+      </div>
+    </div>
   </div>
   <keep-alive>
     <component :is="currentComponent"></component>
@@ -48,3 +53,35 @@ export default {
   },
 };
 </script>
+<style>
+  .xkb {
+  color: #000000;
+  font-size: 1.1em;
+  position: relative;
+}
+
+.xkb:hover {
+  color: #000000;
+  font-weight: 500;
+}
+
+.xkb::after {
+  box-sizing: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  background-color: #000000;
+  color: transparent;
+  width: 0%;
+  content: '';
+  height: 2px;
+  transition: all 0.2s;
+}
+
+.xkb:hover::after {
+  width: 100%;
+}
+</style>

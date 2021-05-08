@@ -17,7 +17,7 @@ module.exports = {
         },
         slideBottomToTop: {
           '0%': { height: '100vh' },
-          '100%': { height: '0px' },
+          '100%': { height: '0px', opacity: 0 },
         },
       },
       animation: {

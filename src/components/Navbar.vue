@@ -21,9 +21,13 @@
         ></path>
       </svg>
     </div>
-    <router-link @click="closeNavbar" to="/">Home</router-link>
-    <router-link @click="closeNavbar" to="/team">Team</router-link>
-    <router-link @click="closeNavbar" to="/add">Add</router-link>
+    <div
+      class="flex flex-col justify-between items-center h-1/3 font-bold text-2xl"
+    >
+      <router-link @click="closeNavbar" to="/">Home</router-link>
+      <router-link @click="closeNavbar" to="/team">Team</router-link>
+      <router-link @click="closeNavbar" to="/add">Add</router-link>
+    </div>
   </div>
   <div
     class="transition-all duration-150 ease-in-out flex w-full items-center bg-secondary fixed z-40"
@@ -83,5 +87,3 @@ export default {
   },
 };
 </script>
-<style lang="css">
-</style>
