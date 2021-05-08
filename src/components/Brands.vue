@@ -2,7 +2,14 @@
   <div class="flex justify-center w-full">
     <div class="w-10/12 bg-white">
       <Dropdown @selected-brand="setSelectedBrand"></Dropdown>
-      <CardContainer @deletecar="deleteCar" :cars="carsInBrand" />
+      <div class="grid grid-cols-12">
+        <CarType class="col-span-3"></CarType>
+        <CardContainer
+          class="col-span-9"
+          @deletecar="deleteCar"
+          :cars="carsInBrand"
+        />
+      </div>
       <div class="flex justify-center my-5">
         <div class="flex flex-col justify-center items-center">
           <Pagination
@@ -19,12 +26,14 @@
 import Dropdown from '@/components/Dropdown.vue';
 import CardContainer from '@/components/CardContainer.vue';
 import Pagination from '@/components/Pagination.vue';
+import CarType from '@/components/CarType.vue';
 export default {
   name: 'brands',
   components: {
     Dropdown,
     CardContainer,
     Pagination,
+    CarType,
   },
   data() {
     return {
