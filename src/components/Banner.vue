@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="w-full load">
+  <div class="w-full load mb-10">
     <nav class="bg-white shadow-lg">
       <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
         <div class="flex justify-between items-center">
@@ -31,13 +31,10 @@
       >
         <div>
           <h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">
-            Get your own <span class="text-indigo-600">Dream Car</span>
+            Don't let anyone stop your <span class="text-indigo-600">Dream</span>
           </h2>
           <p class="mt-2 text-sm text-gray-500 md:text-base">
-            A car (or automobile) is a wheeled motor vehicle used for
-            transportation. Most definitions of cars say that they run primarily
-            on roads, seat one to eight people, have four wheels, and mainly
-            transport people rather than goods.
+            go fucking sleep now
           </p>
           <div class="flex justify-center lg:justify-start mt-6"></div>
         </div>

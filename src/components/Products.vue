@@ -1,30 +1,36 @@
 <template>
   <div class="flex justify-center">
-    <div class="flex w-10/12">
-      <div
-        id="brandpage"
-        class="bg-white p-4 w-full text-center text-xl"
-        @click="changeDynamicComponent('brands')"
-        :class="{
-          'border-b-2 border-black font-bold':
-            $store.state.currentDynamicComponent === 'brands',
-          'xkb hover:font-black':
-            $store.state.currentDynamicComponent !== 'brands',
-        }"
-      >
-        PRODUCT
-      </div>
-      <div
-        class="bg-white p-4 w-full text-center text-xl"
-        @click="changeDynamicComponent('add')"
-        :class="{
-          'border-b-2 border-black font-bold':
-            $store.state.currentDynamicComponent === 'add',
-          'xkb hover:font-black':
-            $store.state.currentDynamicComponent !== 'add',
-        }"
-      >
-        ADD
+    <div class="flex w-10/12 bg-white">
+      <div class="flex w-full">
+        <div class=" w-full flex justify-center">
+          <div
+            id="brandpage"
+            class="bg-white p-4 w-1/2 text-center text-xl"
+            @click="changeDynamicComponent('brands')"
+            :class="{
+              'border-b-2 border-black font-bold':
+                $store.state.currentDynamicComponent === 'brands',
+              'xkb hover:font-black':
+                $store.state.currentDynamicComponent !== 'brands',
+            }"
+          >
+            PRODUCT
+          </div>
+        </div>
+        <div class="w-full flex justify-center">
+          <div
+            class="bg-white p-4 w-1/2 text-center text-xl"
+            @click="changeDynamicComponent('add')"
+            :class="{
+              'border-b-2 border-black font-bold':
+                $store.state.currentDynamicComponent === 'add',
+              'xkb hover:font-black':
+                $store.state.currentDynamicComponent !== 'add',
+            }"
+          >
+            ADD
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,16 +1,18 @@
 <template lang="html">
   <div>
-    <div class="bg-white text-xl font-bold text-center">CarType</div>
-    <div class="flex justify-center">
-      <div class="border-b-2 pt-1 w-2/3"></div>
-    </div>
+    <div class="bg-white text-xl font-bold pl-10 m">CarType</div>
     <div class="flex flex-col pl-10 pt-5">
+      <div class="border-b-2 mb-5 w-2/3"></div>
       <div
         v-for="carTypenaja in carType"
         :key="carTypenaja.id"
-        class="xkb2 mb-2 hoverbold cursor-pointer text-xl"
+        class="xkb2 mb-1 hoverbold cursor-pointer text-xl pb-1"
       >
         {{ carTypenaja.name }}
+      </div>
+      <div class="border-t-2 mt-3 w-2/3"></div>
+      <div class="xkb2 mb-2 hoverbold cursor-pointer text-xl pt-2 mt-3 pb-1">
+        ALL
       </div>
     </div>
   </div>
