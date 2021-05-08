@@ -95,6 +95,9 @@
               <div v-if="errors.name" class="text-red-500 ml-5">
                 {{ errors.name }}
               </div>
+              <div v-if="errors.nameExist" class="text-red-500 ml-5">
+                {{ errors.nameExist }}
+              </div>
             </div>
             <div class="flex flex-col">
               <label for="price">Price (THB)</label>
@@ -373,7 +376,7 @@ export default {
       }
     },
     async saveCar() {
-      if (this.carValidator()) {
+      if (await this.carValidator()) {
         const formData = new FormData();
         formData.append('car', JSON.stringify(this.car));
         if (this.images.length > 0 && this.isImageUpdate) {
@@ -382,7 +385,7 @@ export default {
         this.$emit('save', formData);
       }
     },
-    carValidator() {
+    async carValidator() {
       const rules = {
         hasError: false,
         errors: {},
@@ -391,6 +394,7 @@ export default {
             const msg = 'Name is required';
             rules.errors.name = msg;
             rules.hasError = true;
+            rules.nameChecked = true;
           }
         },
         price(price) {
@@ -456,7 +460,23 @@ export default {
         rules.errors.images = 'require atleast 1 image';
         rules.hasError = true;
       }
+      if (!rules.errors.name) {
+        const res = await this.getHttp(`/api/cars/namecheck/${this.car.name}`);
+        if (res.status === 200 && res.data) {
+          if (this.car.id) {
+            const resCar = await this.getHttp(`/api/cars/${this.car.id}`);
+            if (resCar.data.name !== this.car.name) {
+              rules.errors.nameExist = 'Name Already Exist';
+              rules.hasError = true;
+            }
+          } else {
+            rules.errors.nameExist = 'Name Already Exist';
+            rules.hasError = true;
+          }
+        }
+      }
       this.errors = rules.errors;
+      console.log(this.errors);
       return !rules.hasError;
     },
     capitalize(s) {
