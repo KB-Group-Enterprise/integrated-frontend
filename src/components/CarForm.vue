@@ -1,6 +1,6 @@
 <template lang="html">
-  <section class="w-screen flex justify-center min-h-content">
-    <div class="w-10/12 bg-white p-1 lg:p-5 flex justify-center">
+  <section class="w-full flex justify-center min-h-content">
+    <div class="w-10/12 bg-white flex justify-center">
       <div class="w-10/12">
         <div class="flex justify-between">
           <h1 class="text-3xl my-5">{{ title }}</h1>
