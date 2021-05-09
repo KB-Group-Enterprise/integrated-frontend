@@ -31,7 +31,8 @@
       >
         <div>
           <h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">
-            Don't let anyone stop your<span class="text-indigo-600">Dream</span>
+            Don't let anyone stop your
+            <span class="text-indigo-600">Dream</span>
           </h2>
           <p class="mt-2 text-sm text-gray-500 md:text-base">
             go fucking sleep now

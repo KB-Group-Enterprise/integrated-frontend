@@ -61,10 +61,8 @@ export default {
     async showCarResult(currentPage) {
       const amount = 12;
       const sortBy = 'id';
-      const direction = 'asc';
+      const direction = 'desc';
       let res;
-      console.log(this.brandId);
-      console.log(this.carTypeId);
       if (this.brandId === 'all' && this.carTypeId === 'all') {
         res = await this.getHttp(
           `/api/cars/pages/${currentPage}/${amount}/${sortBy}/${direction}`
