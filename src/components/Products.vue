@@ -5,12 +5,12 @@
         <div class="w-full flex justify-center">
           <div
             id="brandpage"
-            class="bg-white p-4 w-1/2 text-center text-xl"
+            class="bg-white p-4 w-1/2 text-center text-xl xkb"
             @click="changeDynamicComponent('brands')"
             :class="{
-              'border-b-2 border-black font-bold':
+              'xkb3 border-black font-bold':
                 $store.state.currentDynamicComponent === 'brands',
-              'xkb hover:font-black':
+              'hover:font-black':
                 $store.state.currentDynamicComponent !== 'brands',
             }"
           >
@@ -19,12 +19,12 @@
         </div>
         <div class="w-full flex justify-center">
           <div
-            class="bg-white p-4 w-1/2 text-center text-xl"
+            class="bg-white p-4 w-1/2 text-center text-xl xkb"
             @click="changeDynamicComponent('add')"
             :class="{
-              'border-b-2 border-black font-bold':
+              'xkb3 font-bold':
                 $store.state.currentDynamicComponent === 'add',
-              'xkb hover:font-black':
+              'hover:font-black':
                 $store.state.currentDynamicComponent !== 'add',
             }"
           >
@@ -88,6 +88,22 @@ export default {
   background-color: #000000;
   color: transparent;
   width: 0%;
+  content: '';
+  height: 2px;
+  transition: all 0.2s;
+}
+
+.xkb3::after {
+  box-sizing: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  background-color: #000000;
+  color: transparent;
+  width: 100%;
   content: '';
   height: 2px;
   transition: all 0.2s;
