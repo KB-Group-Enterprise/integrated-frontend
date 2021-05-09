@@ -7,13 +7,20 @@
         v-for="carTypenaja in carType"
         :key="carTypenaja.id"
         class="xkb2 mb-1 hoverbold cursor-pointer text-xl pb-1"
-        :class="{ 'xkb4': selectedCarTypeId == carTypenaja.id }"
+        :class="{ xkb4: selectedCarTypeId == carTypenaja.id }"
         @click="selectedCarTypeId = carTypenaja.id"
       >
         {{ carTypenaja.name }}
       </div>
       <div class="border-t-2 mt-3 w-2/3"></div>
-      <div class="xkb2 mb-2 hoverbold cursor-pointer text-xl pt-2 mt-3 pb-1">
+      <div
+        class="xkb2 mb-2 hoverbold cursor-pointer text-xl pt-2 mt-3 pb-1"
+        :class="{ xkb4: selectedCarTypeId == 'all' }"
+        @click="
+          selectedCarTypeId = 'all';
+          this.$emit('selected-cartype', 'all');
+        "
+      >
         ALL
       </div>
     </div>
@@ -24,9 +31,12 @@ export default {
   data() {
     return {
       carType: [],
-      selectedCarTypeId: '',
+      selectedCarTypeId: 'all',
       hover: false,
     };
+  },
+  async mounted() {
+    this.$emit('selected-cartype', this.selectedCarTypeId);
   },
   async created() {
     this.carType = await this.getcar();
@@ -39,7 +49,6 @@ export default {
   },
   watch: {
     selectedCarTypeId() {
-      console.log(this.selectedCarTypeId);
       this.$emit('selected-cartype', this.selectedCarTypeId);
     },
   },

@@ -22,8 +22,7 @@
             class="bg-white p-4 w-1/2 text-center text-xl xkb"
             @click="changeDynamicComponent('add')"
             :class="{
-              'xkb3 font-bold':
-                $store.state.currentDynamicComponent === 'add',
+              'xkb3 font-bold': $store.state.currentDynamicComponent === 'add',
               'hover:font-black':
                 $store.state.currentDynamicComponent !== 'add',
             }"

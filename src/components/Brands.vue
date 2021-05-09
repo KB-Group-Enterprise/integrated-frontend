@@ -63,14 +63,28 @@ export default {
       const sortBy = 'id';
       const direction = 'asc';
       let res;
-      if (this.brandId === 'all') {
+      console.log(this.brandId);
+      console.log(this.carTypeId);
+      if (this.brandId === 'all' && this.carTypeId === 'all') {
         res = await this.getHttp(
           `/api/cars/pages/${currentPage}/${amount}/${sortBy}/${direction}`
         );
-      } else {
+        console.log('ALL&ALL');
+      } else if (this.brandId !== 'all' && this.carTypeId === 'all') {
         res = await this.getHttp(
           `/api/cars/brand/${this.brandId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
         );
+        console.log('!ALL&ALL');
+      } else if (this.brandId === 'all' && this.carTypeId !== 'all') {
+        res = await this.getHttp(
+          `/api/cars/cartype/${this.carTypeId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
+        );
+        console.log('ALL&!ALL');
+      } else if (this.brandId !== 'all' && this.carTypeId !== 'all') {
+        res = await this.getHttp(
+          `/api/cars/brand/${this.brandId}/cartype/${this.carTypeId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
+        );
+        console.log('!ALL&!ALL');
       }
       this.currentPage = currentPage;
       if (res) {
@@ -96,6 +110,11 @@ export default {
   },
   watch: {
     async brandId() {
+      this.currentPage = 0;
+      this.$store.dispatch('changePage', true);
+      this.showCarResult(this.currentPage);
+    },
+    async carTypeId() {
       this.currentPage = 0;
       this.$store.dispatch('changePage', true);
       this.showCarResult(this.currentPage);
