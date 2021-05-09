@@ -5,7 +5,7 @@
         <div class="w-full flex justify-center">
           <div
             id="brandpage"
-            class="bg-white p-4 w-1/2 text-center text-xl xkb cursor-pointer"
+            class="bg-white p-4 w-full lg:w-1/2 text-center text-xl xkb cursor-pointer"
             @click="changeDynamicComponent('brands')"
             :class="{
               'xkb3 font-bold':
@@ -19,7 +19,7 @@
         </div>
         <div class="w-full flex justify-center">
           <div
-            class="bg-white p-4 w-1/2 text-center text-xl xkb cursor-pointer"
+            class="bg-white p-4 w-full lg:w-1/2 text-center text-xl xkb cursor-pointer"
             @click="changeDynamicComponent('add')"
             :class="{
               'xkb3 font-bold': $store.state.currentDynamicComponent === 'add',

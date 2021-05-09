@@ -1,6 +1,6 @@
 <template>
   <Navbar></Navbar>
-  <div class="relative position-content bg-primary">
+  <div class="relative position-content bg-white lg:bg-primary">
     <router-view :key="$store.state.componentKey" />
   </div>
   <div class="flex justify-center">

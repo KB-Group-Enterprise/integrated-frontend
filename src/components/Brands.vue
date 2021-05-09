@@ -3,13 +3,13 @@
     <div class="w-10/12 bg-white">
       <banner></banner>
       <Dropdown class="load" @selected-brand="setSelectedBrand"></Dropdown>
-      <div class="grid grid-cols-12">
+      <div class="flex flex-col lg:grid lg:grid-cols-12">
         <CarType
-          class="col-span-3 load"
+          class="lg:col-span-3 load"
           @selected-cartype="setSelectedCarType"
         ></CarType>
         <CardContainer
-          class="col-span-9 load"
+          class="lg:col-span-9 load"
           @deletecar="deleteCar"
           :cars="carsInBrand"
         />

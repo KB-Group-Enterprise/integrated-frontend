@@ -40,6 +40,17 @@
     class="transition-all duration-150 ease-in-out flex w-full items-center bg-secondary fixed z-40"
     :class="[isScrolled ? 'h-16' : 'h-navbar']"
   >
+    <router-link
+      class="gmobile text-5xl ml-5 lg:hidden"
+      @click="
+        closeNavbar();
+        $store.dispatch('changeDynamicComponent', 'brands');
+      "
+      to="/"
+      style="font-family: 'Righteous', cursive"
+    >
+      G
+    </router-link>
     <div
       @click="openNavbar"
       class="w-9 h-auto flex flex-col p-1 absolute right-5 lg:hidden"
@@ -51,7 +62,10 @@
     <div class="hidden items-center justify-between lg:flex w-full">
       <router-link
         class="mx-3 px-2 text-3xl"
-        @click="closeNavbar"
+        @click="
+          closeNavbar();
+          $store.dispatch('changeDynamicComponent', 'brands');
+        "
         to="/"
         style="font-family: 'Righteous', cursive"
       >
