@@ -44,7 +44,15 @@
         </div>
       </div>
       <div class="border-t-2 pb-5"></div>
-      <div class="flex justify-center">
+      <div class="flex">
+        <div v-for="color in car.colors" :key="color.id">
+          <div
+            class="w-5 h-5 mx-1 border-2 border-black"
+            :style="{ backgroundColor: color.hex }"
+          ></div>
+        </div>
+      </div>
+      <div class="flex justify-center mt-5">
         <div
           class="mb-5 shadow w-11/12"
           v-if="isLoading"
