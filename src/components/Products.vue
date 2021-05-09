@@ -5,10 +5,10 @@
         <div class="w-full flex justify-center">
           <div
             id="brandpage"
-            class="bg-white p-4 w-1/2 text-center text-xl xkb"
+            class="bg-white p-4 w-1/2 text-center text-xl xkb cursor-pointer"
             @click="changeDynamicComponent('brands')"
             :class="{
-              'xkb3 border-black font-bold':
+              'xkb3 font-bold':
                 $store.state.currentDynamicComponent === 'brands',
               'hover:font-black':
                 $store.state.currentDynamicComponent !== 'brands',
@@ -19,7 +19,7 @@
         </div>
         <div class="w-full flex justify-center">
           <div
-            class="bg-white p-4 w-1/2 text-center text-xl xkb"
+            class="bg-white p-4 w-1/2 text-center text-xl xkb cursor-pointer"
             @click="changeDynamicComponent('add')"
             :class="{
               'xkb3 font-bold': $store.state.currentDynamicComponent === 'add',
@@ -71,44 +71,4 @@ export default {
 };
 </script>
 <style>
-.xkb {
-  color: #000000;
-  position: relative;
-}
-
-.xkb::after {
-  box-sizing: inherit;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  background-color: #000000;
-  color: transparent;
-  width: 0%;
-  content: '';
-  height: 2px;
-  transition: all 0.2s;
-}
-
-.xkb3::after {
-  box-sizing: inherit;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  background-color: #000000;
-  color: transparent;
-  width: 100%;
-  content: '';
-  height: 2px;
-  transition: all 0.2s;
-}
-
-.xkb:hover::after {
-  width: 100%;
-}
 </style>

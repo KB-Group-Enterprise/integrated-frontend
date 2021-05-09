@@ -41,4 +41,29 @@ body {
   opacity: 0;
   animation: fadeInBottom 0.5s ease-in-out forwards;
 }
+.xkb {
+  color: #000000;
+  position: relative;
+}
+
+.xkb::after {
+  box-sizing: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  background-color: #000000;
+  color: transparent;
+  width: 0%;
+  content: '';
+  height: 2px;
+  transition: all 0.2s;
+}
+
+.xkb:hover::after,
+.xkb3::after {
+  width: 100%;
+}
 </style>

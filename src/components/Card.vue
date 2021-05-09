@@ -128,7 +128,7 @@ export default {
   },
 };
 </script>
-<style lang="css">
+<style lang="css" scoped>
 .active {
   background-color: black;
   width: 0.75rem;

@@ -63,7 +63,14 @@
         </div>
       </router-link>
       <div class="w-1/5 flex justify-around mx-5">
-        <router-link @click="closeNavbar" to="/">Home</router-link>
+        <router-link
+          @click="
+            closeNavbar();
+            $store.dispatch('changeDynamicComponent', 'brands');
+          "
+          to="/"
+          >Home</router-link
+        >
         <router-link @click="closeNavbar" to="/team">Team</router-link>
         <router-link @click="closeNavbar" to="/add">Add</router-link>
         <router-link @click="closeNavbar" to="/test/list">TestList</router-link>
