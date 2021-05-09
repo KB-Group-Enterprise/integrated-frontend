@@ -50,23 +50,38 @@
     </div>
     <div class="hidden items-center justify-between lg:flex w-full">
       <router-link
-        class="mx-3 px-2 text-xl"
+        class="mx-3 px-2 text-3xl"
         @click="closeNavbar"
         to="/"
         style="font-family: 'Righteous', cursive"
-        ><div class="flex flex-col text-center">
-          <div class="flex flex-row">
-            <div class="g">G</div>
-            <div class="fadeIn"><div class="andi">ANDI</div></div>
+      >
+        <div class="flex flex-row">
+          <div class="flex flex-col text-center leading-none w-full h-full">
+            <div class="flex flex-row">
+              <div class="g">G</div>
+              <div class="andi">ANDHI</div>
+            </div>
+            <div class="road">ROAD</div>
           </div>
-          <div class="fadeIn road"><div>ROAD</div></div>
+          <img class="w-12 gandi" src="@/assets/gandhi.png" />
         </div>
       </router-link>
       <div class="w-1/5 flex justify-around mx-5">
-        <router-link @click="closeNavbar" to="/">Home</router-link>
-        <router-link @click="closeNavbar" to="/team">Team</router-link>
-        <router-link @click="closeNavbar" to="/add">Add</router-link>
-        <router-link @click="closeNavbar" to="/test/list">TestList</router-link>
+        <router-link class="hover:font-bold" @click="closeNavbar" to="/"
+          >Home</router-link
+        >
+        <router-link class="hover:font-bold" @click="closeNavbar" to="/team"
+          >Team</router-link
+        >
+        <router-link class="hover:font-bold" @click="closeNavbar" to="/add"
+          >Add</router-link
+        >
+        <router-link
+          class="hover:font-bold"
+          @click="closeNavbar"
+          to="/test/list"
+          >TestList</router-link
+        >
       </div>
     </div>
   </div>
@@ -112,22 +127,37 @@ export default {
 <style>
 .fadeIn {
   opacity: 0;
-  animation-delay: 5s;
   animation: fadeInBottom 1s forwards;
 }
 .g {
-  animation-delay: 0s;
+  opacity: 0;
   animation: gandiGetStronger 2s forwards;
+  animation-delay: 0.5s;
 }
 .andi {
-  /* opacity: 0; */
-  animation-delay: 1s;
-}
-.road {
-  /* opacity: 0; */
+  opacity: 0;
+  animation: fadeInBottom 1s forwards;
   animation-delay: 2s;
 }
-
+.road {
+  opacity: 0;
+  animation: fadeInBottom 1s forwards;
+  animation-delay: 3s;
+}
+.gandi {
+  opacity: 0;
+  animation: fadeInGandhi 1s forwards;
+  animation-delay: 4s;
+}
+@keyframes fadeInGandhi {
+  from {
+    opacity: 0;
+    transform: translateX(100rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes fadeInBottom {
   from {
     opacity: 0;
@@ -143,9 +173,11 @@ export default {
   }
   30% {
     transform: scale(4) translateX(0.5rem) translateY(0.2rem);
+    opacity: 1;
   }
   100% {
     transform: scale(1);
+    opacity: 1;
   }
 }
 </style>
