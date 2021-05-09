@@ -1,12 +1,14 @@
 <template lang="html">
   <div>
-    <div class="bg-white text-xl font-bold pl-10 m">CarType</div>
+    <div class="bg-white text-xl font-bold pl-10 mt-10">CarType</div>
     <div class="flex flex-col pl-10 pt-5">
       <div class="border-b-2 mb-5 w-2/3"></div>
       <div
         v-for="carTypenaja in carType"
         :key="carTypenaja.id"
         class="xkb2 mb-1 hoverbold cursor-pointer text-xl pb-1"
+        :class="{ 'xkb4': selectedCarTypeId == carTypenaja.id }"
+        @click="selectedCarTypeId = carTypenaja.id"
       >
         {{ carTypenaja.name }}
       </div>
@@ -22,6 +24,7 @@ export default {
   data() {
     return {
       carType: [],
+      selectedCarTypeId: '',
       hover: false,
     };
   },
@@ -32,6 +35,12 @@ export default {
     async getcar() {
       const res = await this.getHttp('/api/cartypes');
       return res.data;
+    },
+  },
+  watch: {
+    selectedCarTypeId() {
+      console.log(this.selectedCarTypeId);
+      this.$emit('selected-cartype', this.selectedCarTypeId);
     },
   },
 };
@@ -58,6 +67,21 @@ export default {
   background-color: #000000;
   color: transparent;
   width: 0%;
+  content: '';
+  height: 2px;
+  transition: all 0.2s;
+}
+
+.xkb4::after {
+  box-sizing: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: left;
+  background-color: #000000;
+  color: transparent;
+  width: 50%;
   content: '';
   height: 2px;
   transition: all 0.2s;

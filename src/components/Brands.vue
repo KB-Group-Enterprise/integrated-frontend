@@ -4,7 +4,10 @@
       <banner></banner>
       <Dropdown class="load" @selected-brand="setSelectedBrand"></Dropdown>
       <div class="grid grid-cols-12">
-        <CarType class="col-span-3 load"></CarType>
+        <CarType
+          class="col-span-3 load"
+          @selected-cartype="setSelectedCarType"
+        ></CarType>
         <CardContainer
           class="col-span-9 load"
           @deletecar="deleteCar"
@@ -41,6 +44,7 @@ export default {
   data() {
     return {
       brandId: 1,
+      carTypeId: 0,
       carsInBrand: [],
       totalPage: 1,
       currentPage: 0,
@@ -50,6 +54,9 @@ export default {
   methods: {
     setSelectedBrand(brandId) {
       this.brandId = brandId;
+    },
+    setSelectedCarType(carTypeId) {
+      this.carTypeId = carTypeId;
     },
     async showCarResult(currentPage) {
       const amount = 12;
