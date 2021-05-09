@@ -35,7 +35,7 @@
             </button>
           </div>
         </div>
-        <div class="flex">
+        <div class="flex mt-3">
           <div class="p-3 text-white font-bold bg-gray-800">Uploaded</div>
           <div class="p-3 border border-gray-200 font-bold">
             <span class="text-green-800">{{ addedImgs }}</span> Images

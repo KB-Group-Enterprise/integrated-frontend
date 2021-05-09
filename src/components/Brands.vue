@@ -14,7 +14,7 @@
           :cars="carsInBrand"
         />
       </div>
-      <div class="flex justify-center my-5">
+      <div class="flex justify-center my-20">
         <div class="flex flex-col justify-center items-center">
           <Pagination
             @changepage="showCarResult"
@@ -69,22 +69,18 @@ export default {
         res = await this.getHttp(
           `/api/cars/pages/${currentPage}/${amount}/${sortBy}/${direction}`
         );
-        console.log('ALL&ALL');
       } else if (this.brandId !== 'all' && this.carTypeId === 'all') {
         res = await this.getHttp(
           `/api/cars/brand/${this.brandId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
         );
-        console.log('!ALL&ALL');
       } else if (this.brandId === 'all' && this.carTypeId !== 'all') {
         res = await this.getHttp(
           `/api/cars/cartype/${this.carTypeId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
         );
-        console.log('ALL&!ALL');
       } else if (this.brandId !== 'all' && this.carTypeId !== 'all') {
         res = await this.getHttp(
           `/api/cars/brand/${this.brandId}/cartype/${this.carTypeId}/pages/${currentPage}/${amount}/${sortBy}/${direction}`
         );
-        console.log('!ALL&!ALL');
       }
       this.currentPage = currentPage;
       if (res) {
