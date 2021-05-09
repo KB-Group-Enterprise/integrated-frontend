@@ -48,11 +48,26 @@
       <div class="h-1 my-2 bg-black rounded-xl"></div>
       <div class="h-1 bg-black rounded-xl"></div>
     </div>
-    <div class="hidden items-center justify-around lg:flex w-1/5">
-      <router-link @click="closeNavbar" to="/">Home</router-link>
-      <router-link @click="closeNavbar" to="/team">Team</router-link>
-      <router-link @click="closeNavbar" to="/add">Add</router-link>
-      <router-link @click="closeNavbar" to="/test/list">TestList</router-link>
+    <div class="hidden items-center justify-between lg:flex w-full">
+      <router-link
+        class="mx-3 px-2 text-xl"
+        @click="closeNavbar"
+        to="/"
+        style="font-family: 'Righteous', cursive"
+        ><div class="flex flex-col text-center">
+          <div class="flex flex-row">
+            <div class="g">G</div>
+            <div class="fadeIn"><div class="andi">ANDI</div></div>
+          </div>
+          <div class="fadeIn road"><div>ROAD</div></div>
+        </div>
+      </router-link>
+      <div class="w-1/5 flex justify-around mx-5">
+        <router-link @click="closeNavbar" to="/">Home</router-link>
+        <router-link @click="closeNavbar" to="/team">Team</router-link>
+        <router-link @click="closeNavbar" to="/add">Add</router-link>
+        <router-link @click="closeNavbar" to="/test/list">TestList</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -94,3 +109,43 @@ export default {
   },
 };
 </script>
+<style>
+.fadeIn {
+  opacity: 0;
+  animation-delay: 5s;
+  animation: fadeInBottom 1s forwards;
+}
+.g {
+  animation-delay: 0s;
+  animation: gandiGetStronger 2s forwards;
+}
+.andi {
+  /* opacity: 0; */
+  animation-delay: 1s;
+}
+.road {
+  /* opacity: 0; */
+  animation-delay: 2s;
+}
+
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes gandiGetStronger {
+  0% {
+    transform: scale(4) translateX(0.5rem) translateY(0.2rem);
+  }
+  30% {
+    transform: scale(4) translateX(0.5rem) translateY(0.2rem);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
