@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-let baseURL =
-  process.env.NODE_ENV == 'production'
-    ? process.env.VUE_APP_BACKEND_URL
-    : 'http://localhost:5000';
+let baseURL = 'http://13.94.1.42/backend';
 export default axios.create({
   baseURL,
 });

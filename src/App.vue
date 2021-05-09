@@ -11,13 +11,16 @@
       :type="$store.state.toastType"
     ></notification>
   </div>
+  <Footer></Footer>
 </template>
 
 <script>
 import Navbar from './components/Navbar';
 import Notification from './components/Notification';
+import Footer from './components/Footer';
 export default {
   components: {
+    Footer,
     Navbar,
     Notification,
   },
