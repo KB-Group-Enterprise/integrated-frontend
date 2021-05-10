@@ -39,6 +39,15 @@ body {
     opacity: 1;
   }
 }
+#app {
+  background-color: white;
+}
+
+@media only screen and (min-width: 1024px) {
+  #app {
+    background-color: black;
+  }
+}
 
 .load {
   opacity: 0;

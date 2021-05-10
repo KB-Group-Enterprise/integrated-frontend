@@ -36,32 +36,17 @@
       <router-link @click="closeNavbar" to="/add">Add</router-link>
     </div>
   </div>
-  <div
-    class="transition-all duration-150 ease-in-out flex w-full items-center bg-secondary fixed z-40"
-    :class="[isScrolled ? 'h-16' : 'h-navbar']"
-  >
-    <router-link
-      class="gmobile text-5xl ml-5 lg:hidden"
-      @click="
-        closeNavbar();
-        $store.dispatch('changeDynamicComponent', 'brands');
-      "
-      to="/"
-      style="font-family: 'Righteous', cursive"
-    >
-      G
-    </router-link>
+  <div class="w-full flex justify-center">
     <div
-      @click="openNavbar"
-      class="w-9 h-auto flex flex-col p-1 absolute right-5 lg:hidden"
+      class="transition-all duration-150 ease-in-out flex items-center bg-secondary fixed z-40"
+      :class="[
+        isScrolled ? 'lg:h-20' : 'h-navbar',
+        isScrolled ? 'shadow-md' : '',
+        isScrolled || this.$route.fullPath !== '/' ? 'w-full' : 'w-10/12',
+      ]"
     >
-      <div class="h-1 bg-black rounded-xl"></div>
-      <div class="h-1 my-2 bg-black rounded-xl"></div>
-      <div class="h-1 bg-black rounded-xl"></div>
-    </div>
-    <div class="hidden items-center justify-between lg:flex w-full">
       <router-link
-        class="mx-3 px-2 text-3xl"
+        class="gmobile text-5xl ml-5 lg:hidden"
         @click="
           closeNavbar();
           $store.dispatch('changeDynamicComponent', 'brands');
@@ -69,30 +54,51 @@
         to="/"
         style="font-family: 'Righteous', cursive"
       >
-        <div class="flex flex-row">
-          <div class="flex flex-col text-center leading-none w-full h-full">
-            <div class="flex flex-row">
-              <div class="g">G</div>
-              <div class="andi">ANDHI</div>
-            </div>
-            <div class="road">ROAD</div>
-          </div>
-          <img class="w-12 gandi" src="@/assets/gandhi.png" />
-        </div>
+        G
       </router-link>
-      <div class="w-1/5 flex justify-around mx-5">
+      <div
+        @click="openNavbar"
+        class="w-9 h-auto flex flex-col p-1 absolute right-5 lg:hidden"
+      >
+        <div class="h-1 bg-black rounded-xl"></div>
+        <div class="h-1 my-2 bg-black rounded-xl"></div>
+        <div class="h-1 bg-black rounded-xl"></div>
+      </div>
+      <div class="hidden items-center justify-between lg:flex w-full">
         <router-link
-          class="hover:font-bold"
+          class="mx-3 px-2 text-3xl"
           @click="
             closeNavbar();
             $store.dispatch('changeDynamicComponent', 'brands');
           "
           to="/"
-          >Home</router-link
+          style="font-family: 'Righteous', cursive"
         >
-        <router-link class="hover:font-bold" @click="closeNavbar" to="/team"
-          >Team</router-link
-        >
+          <div class="flex flex-row">
+            <div class="flex flex-col text-center leading-none w-full h-full">
+              <div class="flex flex-row">
+                <div class="g">G</div>
+                <div class="andi">ANDHI</div>
+              </div>
+              <div class="road">ROAD</div>
+            </div>
+            <img class="w-12 gandi" src="@/assets/gandhi.png" />
+          </div>
+        </router-link>
+        <div class="w-1/5 flex justify-around mx-5">
+          <router-link
+            class="hover:font-bold"
+            @click="
+              closeNavbar();
+              $store.dispatch('changeDynamicComponent', 'brands');
+            "
+            to="/"
+            >Home</router-link
+          >
+          <router-link class="hover:font-bold" @click="closeNavbar" to="/team"
+            >Team</router-link
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -107,6 +113,9 @@ export default {
       animationClass: '',
       isScrolled: false,
     };
+  },
+  mounted() {
+    console.log(this.$route);
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
