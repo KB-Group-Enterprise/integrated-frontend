@@ -112,11 +112,11 @@ export default {
 }
 @keyframes toColor {
   from {
-    filter: grayscale(100%);
-    transform: scale(0.8, 0.8);
+    filter: blur(0.5rem);
+    transform: scale(0.9, 0.9);
   }
   to {
-    filter: grayscale(0%);
+    filter: blur(0);
     transform: scale(1, 1);
   }
 }
@@ -129,8 +129,8 @@ export default {
   }
 }
 .img-animate {
-  filter: grayscale(100%);
-  transform: scale(0.8, 0.8);
+  filter: blur(0.5rem);
+  transform: scale(0.9, 0.9);
   animation: toColor 1s forwards;
   animation-delay: 2s;
 }
