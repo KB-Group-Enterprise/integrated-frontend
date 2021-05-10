@@ -6,11 +6,14 @@
       >
         <div>
           <h2 class="text-3xl font-semibold text-gray-800 md:text-4xl">
-            Don't let anyone stop your
-            <span class="text-indigo-600">Dream</span>
+            Get your own
+            <span class="text-indigo-600">Dream Car</span>
           </h2>
           <p class="mt-2 text-sm text-gray-500 md:text-base">
-            go fucking sleep now
+            A car, is a wheeled motor vehicle used for transportation. Most
+            definitions of cars say that they run primarily on roads, seat one
+            to eight people, have four wheels, and mainly transport people
+            rather than goods. go fucking sleep now
           </p>
           <div class="flex justify-center lg:justify-start mt-6"></div>
         </div>
@@ -22,7 +25,7 @@
         <div
           class="h-full object-cover"
           style="
-            background-image: url(https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.18169-9/15027755_1021714127940812_5474934815382516020_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=174925&_nc_eui2=AeHTsBS59jH1D8EJ5vToUNlGnPE-By3rMoqc8T4HLesyisaWgSXUwFsr4qsMJm-oEl6PEUS4rBnH6wf34L1GYbFR&_nc_ohc=-TeagCFfXb4AX_sVFzY&_nc_ht=scontent.fbkk13-2.fna&oh=18d71865b8ae988087166f3874f92511&oe=60BC4888);
+            background-image: url(https://www.hyundai.com/content/hyundai/ww/data/news/data/2021/0000016609/image/newsroom-0112-photo-1-2021elantranline-1120x745.jpg);
           "
         >
           <div class="h-full bg-black opacity-25"></div>
