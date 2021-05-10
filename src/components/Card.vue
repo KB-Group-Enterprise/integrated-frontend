@@ -66,7 +66,7 @@
       <div class="flex justify-center mt-5">
         <div
           class="mt-2 mb-5 shadow w-11/12"
-          v-if="isLoading"
+          v-if="isLoading && hover"
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
           <div class="p-3">
