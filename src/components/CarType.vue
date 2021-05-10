@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <div>
+    <div class="lg:hidden">
       <div
         v-for="carTypenaja in carType"
         :key="carTypenaja.id"
