@@ -36,25 +36,44 @@
               ></div>
             </div>
           </div>
-          <p class="text-sm font-semibold">{{ car.brand.name }}</p>
+          <div class="text-sm font-semibold flex justify-between">
+            <div>{{ car.brand.name }}</div>
+            <div>{{ car.cartype.name}}</div>
+          </div>
           <p class="text-xl font-bold">{{ car.name }}</p>
-          <p class="text-sm font-semibold mb-2 text-gray-500">
-            {{ priceDetection }}.-
-          </p>
+          <div
+            class="text-sm font-semibold mb-2 text-gray-500 flex justify-between"
+          >
+            <div>{{ priceDetection }}.-</div>
+            <div
+              v-if="isLoading"
+              :class="[hover ? 'hoverDropDownHp' : 'nonHoverDropDownHp']"
+            >
+              {{ car.horsepower }} HP
+            </div>
+          </div>
         </div>
       </div>
       <div class="border-t-2 pb-5"></div>
       <div class="flex">
         <div v-for="color in car.colors" :key="color.id">
           <div
-            class="w-5 h-5 mx-1 border-2 border-black"
+            class="w-5 h-5 mx-1 border border-gray-200"
             :style="{ backgroundColor: color.hex }"
           ></div>
         </div>
       </div>
+      <div
+        class="z-0"
+        :class="[hover ? 'hoverDropDownDes' : 'nonHoverDropDownDes']"
+      >
+        <div class="p-3">
+          {{ car.description }}
+        </div>
+      </div>
       <div class="flex justify-center mt-5">
         <div
-          class="mb-5 shadow w-11/12"
+          class="mt-10 mb-5 shadow w-11/12"
           v-if="isLoading"
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
@@ -138,6 +157,22 @@ export default {
   background-color: gray;
   width: 0.5rem;
   height: 0.5rem;
+}
+.hoverDropDownDes {
+  position: absolute;
+  z-index: 1;
+  animation: fadeInBottom 0.5s ease-out;
+}
+.nonHoverDropDownDes {
+  position: absolute;
+  z-index: 1;
+  animation: fadeOutBottom 0.5s forwards ease-out;
+}
+.hoverDropDownHp {
+  animation: fadeInBottom 0.5s ease-out;
+}
+.nonHoverDropDownHp {
+  animation: fadeOutBottom 0.5s forwards ease-out;
 }
 .hoverDropDown {
   position: absolute;

@@ -13,7 +13,7 @@
           :cars="carsInBrand"
         />
       </div>
-      <div class="flex justify-center my-20">
+      <div class="flex justify-center my-32">
         <div class="flex flex-col justify-center items-center">
           <Pagination
             @changepage="showCarResult"
