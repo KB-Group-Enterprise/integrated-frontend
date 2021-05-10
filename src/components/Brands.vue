@@ -85,6 +85,8 @@ export default {
         if (res.status === 200) {
           this.carsInBrand = res.data.list;
           this.totalPage = res.data.total;
+        } else {
+          this.carsInBrand = [];
         }
       } else {
         this.carsInBrand = [];
