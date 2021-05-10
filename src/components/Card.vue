@@ -49,7 +49,7 @@
               v-if="isLoading"
               :class="[hover ? 'hoverDropDownHp' : 'nonHoverDropDownHp']"
             >
-              {{ car.horsepower }} HP
+              {{ car.horsepower }} hp
             </div>
           </div>
         </div>
@@ -63,20 +63,15 @@
           ></div>
         </div>
       </div>
-      <div
-        class="z-0"
-        :class="[hover ? 'hoverDropDownDes' : 'nonHoverDropDownDes']"
-      >
-        <div class="p-3">
-          {{ car.description }}
-        </div>
-      </div>
       <div class="flex justify-center mt-5">
         <div
-          class="mt-10 mb-5 shadow w-11/12"
+          class="mt-2 mb-5 shadow w-11/12"
           v-if="isLoading"
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
+          <div class="p-3">
+            {{ car.description }}
+          </div>
           <div
             @click="edit"
             class="border p-3 cursor-pointer hover:bg-gray-100"
