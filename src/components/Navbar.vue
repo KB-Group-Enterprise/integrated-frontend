@@ -93,15 +93,6 @@
         <router-link class="hover:font-bold" @click="closeNavbar" to="/team"
           >Team</router-link
         >
-        <router-link class="hover:font-bold" @click="closeNavbar" to="/add"
-          >Add</router-link
-        >
-        <router-link
-          class="hover:font-bold"
-          @click="closeNavbar"
-          to="/test/list"
-          >TestList</router-link
-        >
       </div>
     </div>
   </div>

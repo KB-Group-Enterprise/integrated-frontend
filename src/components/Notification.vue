@@ -13,7 +13,7 @@
       class="object-cover rounded-full"
       src="https://cdn.dribbble.com/users/2469324/screenshots/6538803/comp_3.gif"
     />
-    {{ msg }}
+    <p class="mt-2">{{ msg }}</p>
   </div>
 </template>
 <script>

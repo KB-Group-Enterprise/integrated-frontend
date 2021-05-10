@@ -1,12 +1,12 @@
 <template lang="html">
   <section class="w-full flex justify-center min-h-content">
     <div class="w-10/12 bg-white flex justify-center">
-      <div class="w-10/12 load">
+      <div class="w-full md:w-10/12 load">
         <div class="flex justify-between">
           <h1 class="text-3xl my-5">{{ title }}</h1>
         </div>
         <div class="m-2 p-3 w-48 border border-black">
-          <input type="checkbox" @change="autofill" />
+          <input class="cursor-pointer" type="checkbox" @change="autofill" />
           <label class="ml-2">Autofill</label>
         </div>
         <div>
@@ -29,7 +29,7 @@
             </div>
             <button
               @click="chooseFiles()"
-              class="w-full m-2 p-3 md:w-4/12 lg:w-60 h-48 bg-white border border-gray-200 hover:bg-gray-200 text-6xl font-bold"
+              class="w-full m-2 p-3 md:w-4/12 lg:w-60 h-48 bg-white border border-gray-200 transition-all hover:text-white hover:bg-gray-200 text-6xl font-bold"
             >
               +
             </button>
@@ -41,7 +41,7 @@
             <span class="text-green-800">{{ addedImgs }}</span> Images
           </div>
         </div>
-        <form @submit.prevent="saveCar" class="flex flex-col w-10/12">
+        <form @submit.prevent="saveCar" class="flex flex-col w-full md:w-10/12">
           <div class="flex flex-col">
             <input
               id="fileUpload"
@@ -56,7 +56,7 @@
             </div>
           </div>
           <label for="colors" class="mt-5 mb-3">Pick Color</label>
-          <div class="flex flex-wrap mb-5">
+          <div class="flex w-full flex-wrap mb-5">
             <div
               v-for="color in display_colors"
               :key="color"
@@ -69,12 +69,13 @@
                 <input
                   type="checkbox"
                   name="color"
+                  class="cursor-pointer"
                   style="margin-top: 0.4rem"
                   @change="toggleInsert(color)"
                   :checked="getChecked(color)"
                 />
               </div>
-              <div class="p-3 pt-3.5 w-20">
+              <div class="p-2 md:p-3 pt-3.5 w-16 md:w-20">
                 {{ capitalize(color.name) }}
               </div>
             </div>
@@ -158,7 +159,7 @@
                 :class="{ danger: errors.brand }"
                 name="brand"
                 id="brand"
-                class="m-3 p-1 border border-black w-2/4 lg:w-4/12"
+                class="m-3 p-1 border border-black w-2/4 lg:w-4/12 cursor-pointer"
               >
                 <option
                   :value="brand"
@@ -180,7 +181,7 @@
                 :class="{ danger: errors.cartype }"
                 name="type"
                 id="type"
-                class="m-3 p-1 border border-black w-2/4 lg:w-4/12"
+                class="m-3 p-1 border border-black w-2/4 lg:w-4/12 cursor-pointer"
               >
                 <option
                   v-for="cartype in cartypes"
@@ -197,7 +198,7 @@
             </div>
           </section>
           <input
-            class="btn m-3 bg-black text-white hover:bg-gray-800 cursor-pointer w-4/12 h-10 font-bold"
+            class="btn m-3 bg-black text-white hover:bg-gray-100 hover:text-black cursor-pointer transition-all w-4/12 h-10 font-bold"
             type="submit"
             value="Submit"
           />

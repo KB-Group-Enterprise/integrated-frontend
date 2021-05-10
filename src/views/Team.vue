@@ -14,9 +14,9 @@
           <img
             :src="member.img"
             :alt="member.name"
-            class="h-72 object-cover w-full lg:h-64 xl:h-80"
+            class="h-72 object-cover w-full lg:h-64 xl:h-80 img-animate"
           />
-          <div class="bg-gray-800 text-white p-5">
+          <div class="p-5">
             <p class="text-center mt-5 mb-2 font-black">
               {{ member.name.toUpperCase() }}
             </p>
@@ -28,7 +28,7 @@
             </p>
             <div class="flex flex-col lg:flex-row justify-center">
               <div
-                class="fade-items border-2 font-bold border-white p-2 mx-1 my-1"
+                class="fade-items border-2 font-bold border border-black p-2 mx-1 my-1"
                 v-for="res in member.responsibilities"
                 :key="res"
               >
@@ -110,6 +110,16 @@ export default {
     opacity: 1;
   }
 }
+@keyframes toColor {
+  from {
+    filter: grayscale(100%);
+    transform: scale(0.8, 0.8);
+  }
+  to {
+    filter: grayscale(0%);
+    transform: scale(1, 1);
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -117,6 +127,12 @@ export default {
   to {
     opacity: 1;
   }
+}
+.img-animate {
+  filter: grayscale(100%);
+  transform: scale(0.8, 0.8);
+  animation: toColor 1s forwards;
+  animation-delay: 2s;
 }
 .fade-items {
   opacity: 0;

@@ -52,7 +52,7 @@ export default {
       if (res.status === 200) {
         this.$store.dispatch('showToast', {
           toastType: 'success',
-          msg: 'Update Successfull',
+          msg: 'Update Successful',
         });
         this.$store.commit('increment');
         this.car = null;
