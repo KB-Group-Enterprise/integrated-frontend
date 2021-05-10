@@ -2,7 +2,7 @@
   <car-form @save="postData" title="ADD CAR"></car-form>
 </template>
 <script>
-import CarForm from '@/components/CarForm.vue';
+import CarForm from '@/components/form/CarForm.vue';
 export default {
   components: {
     CarForm,

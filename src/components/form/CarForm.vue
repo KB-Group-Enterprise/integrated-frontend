@@ -10,30 +10,12 @@
           <label class="ml-2">Autofill</label>
         </div>
         <div>
-          <h4 class="p-3">Preview</h4>
-          <div
-            class="flex flex-wrap w-full border border-gray-200 p-1 lg:p-3 lg:my-2"
-          >
-            <div
-              v-for="preview in previews"
-              :key="preview"
-              class="flex flex-col items-center md:flex-wrap img-load"
-            >
-              <img :src="preview" class="w-full object-cover m-2" />
-              <button
-                class="btn border border-red-500 p-2 w-11/12 text-red-500 font-bold"
-                @click="deleteImg(previews.indexOf(preview))"
-              >
-                DELETE
-              </button>
-            </div>
-            <button
-              @click="chooseFiles()"
-              class="w-full m-2 p-3 md:w-4/12 lg:w-60 h-48 bg-white border border-gray-200 transition-all hover:text-white hover:bg-gray-200 text-6xl font-bold"
-            >
-              +
-            </button>
-          </div>
+          <h4 class="p-3">Upload Images</h4>
+          <preview
+            :previews="previews"
+            @ondelete="deleteImg"
+            @choosefile="chooseFiles"
+          ></preview>
         </div>
         <div class="flex mt-3">
           <div class="p-3 text-white font-bold bg-gray-800">Uploaded</div>
@@ -209,7 +191,11 @@
 </template>
 
 <script>
+import Preview from './Preview.vue';
 export default {
+  components: {
+    Preview,
+  },
   props: {
     origincar: {
       type: Object,
@@ -315,7 +301,6 @@ export default {
         this.toggleInsert(this.display_colors[0]);
         this.toggleInsert(this.display_colors[1]);
         this.isfilled = true;
-        console.log(this.car);
       }
     },
     getChecked(color) {
@@ -355,7 +340,6 @@ export default {
     },
     imageAdd(event) {
       const file = event.target.files[0];
-      console.log(file);
       if (file) {
         if (file.type === 'image/png' || file.type == 'image/jpeg') {
           if (file.size <= 5 * 5000000) {
@@ -477,7 +461,6 @@ export default {
         }
       }
       this.errors = rules.errors;
-      console.log(this.errors);
       return !rules.hasError;
     },
     capitalize(s) {

@@ -8,7 +8,7 @@
   ></car-form>
 </template>
 <script>
-import CarForm from '@/components/CarForm.vue';
+import CarForm from '@/components/form/CarForm.vue';
 import { mapState } from 'vuex';
 export default {
   components: {

@@ -40,8 +40,8 @@
 
 <script>
 import Brands from '@/components/Brands';
-import Add from '@/views/Add.vue';
-import Update from '@/views/Update.vue';
+import Add from '@/components/Add.vue';
+import Update from '@/components/Update.vue';
 import { mapState } from 'vuex';
 export default {
   name: 'Products',
