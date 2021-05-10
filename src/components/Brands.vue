@@ -3,7 +3,7 @@
     <div class="w-10/12 bg-white">
       <banner
         msg="TIME TO"
-        highlight="CHOSE"
+        highlight="CHOOSE"
         imgSrc="https://s7d1.scene7.com/is/image/volkswagen/VW_NGW6_Launch_ID4_Homepage_Masthead?Zml0PWNyb3AsMSZmbXQ9anBnJnFsdD03OSZ3aWQ9ODAwJmhlaT04MDAmYWxpZ249MC4wMCwwLjAwJmEzZWU="
       ></banner>
       <Dropdown class="load" @selected-brand="setSelectedBrand"></Dropdown>

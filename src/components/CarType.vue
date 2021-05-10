@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="hidden lg:block">
-      <div class="bg-white text-xl font-bold pl-10 mt-10 ">CarType</div>
+      <div class="bg-white text-xl font-bold pl-10 mt-10">CarType</div>
       <div class="flex flex-col pl-10 pt-5">
         <div class="border-b-2 mb-5 w-2/3"></div>
         <div

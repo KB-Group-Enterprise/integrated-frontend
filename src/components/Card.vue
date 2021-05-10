@@ -38,7 +38,7 @@
           </div>
           <div class="text-sm font-semibold flex justify-between">
             <div>{{ car.brand.name }}</div>
-            <div>{{ car.cartype.name}}</div>
+            <div>{{ car.cartype.name }}</div>
           </div>
           <p class="text-xl font-bold">{{ car.name }}</p>
           <div
