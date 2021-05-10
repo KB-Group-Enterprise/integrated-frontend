@@ -1,6 +1,11 @@
 <template>
   <div class="flex justify-center w-full">
     <div class="w-10/12 bg-white">
+      <banner
+        msg="TIME TO"
+        highlight="CHOSE"
+        imgSrc="https://s7d1.scene7.com/is/image/volkswagen/VW_NGW6_Launch_ID4_Homepage_Masthead?Zml0PWNyb3AsMSZmbXQ9anBnJnFsdD03OSZ3aWQ9ODAwJmhlaT04MDAmYWxpZ249MC4wMCwwLjAwJmEzZWU="
+      ></banner>
       <Dropdown class="load" @selected-brand="setSelectedBrand"></Dropdown>
       <div class="flex flex-col lg:grid lg:grid-cols-12">
         <CarType
@@ -30,6 +35,7 @@ import Dropdown from '@/components/Dropdown.vue';
 import CardContainer from '@/components/CardContainer.vue';
 import Pagination from '@/components/Pagination.vue';
 import CarType from '@/components/CarType.vue';
+import Banner from '@/components/Banner.vue';
 export default {
   name: 'brands',
   components: {
@@ -37,6 +43,7 @@ export default {
     CardContainer,
     Pagination,
     CarType,
+    Banner,
   },
   data() {
     return {
