@@ -21,7 +21,7 @@ pipeline {
         }
         stage('clone project and checkout') {
             steps {
-                git branch: 'dev',
+                git branch: 'master',
                     credentialsId: 'sshgit',
                     url: 'git@github.com:KB-Group-Enterprise/integrated-frontend.git'
 
