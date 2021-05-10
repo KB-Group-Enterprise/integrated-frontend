@@ -315,7 +315,6 @@ export default {
         this.toggleInsert(this.display_colors[0]);
         this.toggleInsert(this.display_colors[1]);
         this.isfilled = true;
-        console.log(this.car);
       }
     },
     getChecked(color) {
@@ -355,7 +354,6 @@ export default {
     },
     imageAdd(event) {
       const file = event.target.files[0];
-      console.log(file);
       if (file) {
         if (file.type === 'image/png' || file.type == 'image/jpeg') {
           if (file.size <= 5 * 5000000) {
@@ -477,7 +475,6 @@ export default {
         }
       }
       this.errors = rules.errors;
-      console.log(this.errors);
       return !rules.hasError;
     },
     capitalize(s) {

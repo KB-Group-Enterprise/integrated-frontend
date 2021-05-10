@@ -1,18 +1,18 @@
 <template>
   <div class="home min-h-content flex justify-center">
-    <div class="w-full">
-      <Products></Products>
+    <div class="w-10/12 bg-white">
+      <banner></banner>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Products from '@/components/Products.vue';
+import Banner from '@/components/Banner.vue';
 export default {
   name: 'Home',
   components: {
-    Products,
+    Banner,
   },
   data() {
     return {

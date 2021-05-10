@@ -30,20 +30,20 @@
           $store.dispatch('changeDynamicComponent', 'brands');
         "
         to="/"
-        :class="[this.$route.path === '/' ? 'underline' : '']"
+        :class="[$route.path === '/' ? 'underline' : '']"
         >Home</router-link
       >
       <router-link
         @click="closeNavbar"
         to="/team"
-        :class="[this.$route.path === '/team' ? 'underline' : '']"
+        :class="[$route.path === '/team' ? 'underline' : '']"
         >Team</router-link
       >
       <router-link
         @click="closeNavbar"
-        to="/cars"
-        :class="[this.$route.path === '/cars' ? 'underline' : '']"
-        >Cars</router-link
+        to="/Product"
+        :class="[$route.path === '/product' ? 'underline' : '']"
+        >Product</router-link
       >
     </div>
   </div>
@@ -53,7 +53,7 @@
       :class="[
         isScrolled ? 'lg:h-20' : 'h-navbar',
         isScrolled ? 'shadow-md' : '',
-        isScrolled || this.$route.fullPath !== '/' ? 'w-full' : 'w-10/12',
+        isScrolled || $route.fullPath !== '/' ? 'w-full' : 'w-10/12',
       ]"
     >
       <router-link
@@ -104,22 +104,22 @@
               $store.dispatch('changeDynamicComponent', 'brands');
             "
             to="/"
-            :class="[this.$route.path === '/' ? 'font-bold' : '']"
+            :class="[$route.path === '/' ? 'font-bold' : '']"
             >Home</router-link
           >
           <router-link
             class="hover:font-bold"
             @click="closeNavbar"
             to="/team"
-            :class="[this.$route.path === '/team' ? 'font-bold' : '']"
+            :class="[$route.path === '/team' ? 'font-bold' : '']"
             >Team</router-link
           >
           <router-link
             class="hover:font-bold"
             @click="closeNavbar"
-            to="/cars"
-            :class="[this.$route.path === '/cars' ? 'font-bold' : '']"
-            >Cars</router-link
+            to="/product"
+            :class="[$route.path === '/product' ? 'font-bold' : '']"
+            >Product</router-link
           >
         </div>
       </div>
@@ -136,9 +136,6 @@ export default {
       animationClass: '',
       isScrolled: false,
     };
-  },
-  mounted() {
-    console.log(this.$route);
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
@@ -167,7 +164,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .fadeIn {
   opacity: 0;
   animation: fadeInBottom 1s forwards;
