@@ -70,6 +70,7 @@
           :class="[hover ? 'hoverDropDown' : 'nonHoverDropDown']"
         >
           <div class="p-3">
+            <p class="font-bold">Description</p>
             {{ car.description }}
           </div>
           <div
