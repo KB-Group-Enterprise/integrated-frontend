@@ -28,7 +28,7 @@
             </p>
             <div class="flex flex-col xl:flex-row justify-center">
               <div
-                class="fade-items border-2 font-bold border border-black p-2 mx-1 my-1"
+                class="fade-items border-2 font-bold border-black p-2 mx-1 my-1"
                 v-for="res in member.responsibilities"
                 :key="res"
               >

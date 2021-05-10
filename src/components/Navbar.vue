@@ -30,10 +30,21 @@
           $store.dispatch('changeDynamicComponent', 'brands');
         "
         to="/"
+        :class="[this.$route.path === '/' ? 'underline' : '']"
         >Home</router-link
       >
-      <router-link @click="closeNavbar" to="/team">Team</router-link>
-      <router-link @click="closeNavbar" to="/add">Add</router-link>
+      <router-link
+        @click="closeNavbar"
+        to="/team"
+        :class="[this.$route.path === '/team' ? 'underline' : '']"
+        >Team</router-link
+      >
+      <router-link
+        @click="closeNavbar"
+        to="/cars"
+        :class="[this.$route.path === '/cars' ? 'underline' : '']"
+        >Cars</router-link
+      >
     </div>
   </div>
   <div class="w-full flex justify-center">
@@ -93,10 +104,22 @@
               $store.dispatch('changeDynamicComponent', 'brands');
             "
             to="/"
+            :class="[this.$route.path === '/' ? 'font-bold' : '']"
             >Home</router-link
           >
-          <router-link class="hover:font-bold" @click="closeNavbar" to="/team"
+          <router-link
+            class="hover:font-bold"
+            @click="closeNavbar"
+            to="/team"
+            :class="[this.$route.path === '/team' ? 'font-bold' : '']"
             >Team</router-link
+          >
+          <router-link
+            class="hover:font-bold"
+            @click="closeNavbar"
+            to="/cars"
+            :class="[this.$route.path === '/cars' ? 'font-bold' : '']"
+            >Cars</router-link
           >
         </div>
       </div>
