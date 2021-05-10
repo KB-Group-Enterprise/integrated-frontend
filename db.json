@@ -1,8 +1,9 @@
 {
-    "products": {
-    },
-    "colors": {
-    },
-    "brand": {
-    }
+    "products": [
+        { "id": 1, "description": "test"}
+    ],
+    "colors": [
+    ],
+    "brand": [
+    ]
 }

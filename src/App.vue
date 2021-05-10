@@ -1,30 +1,81 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <Navbar></Navbar>
+  <div class="relative position-content bg-white lg:bg-primary">
+    <router-view :key="$store.state.componentKey" />
   </div>
-  <router-view />
+  <div class="flex justify-center">
+    <notification
+      v-if="$store.state.onLoad"
+      :msg="$store.state.msg"
+      :isOn="$store.state.isToast"
+      :type="$store.state.toastType"
+    ></notification>
+  </div>
+  <Footer></Footer>
 </template>
 
+<script>
+import Navbar from './components/core/Navbar';
+import Notification from './components/core/Notification';
+import Footer from './components/core/Footer';
+export default {
+  components: {
+    Footer,
+    Navbar,
+    Notification,
+  },
+};
+</script>
 <style>
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+  }
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+}
+
+@media only screen and (min-width: 1024px) {
+  #app {
+    background-color: black;
+  }
+}
+
+.load {
+  opacity: 0;
+  animation: fadeInBottom 0.5s ease-in-out forwards;
+}
+.xkb {
+  color: #000000;
+  position: relative;
+}
+
+.xkb::after {
+  box-sizing: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   text-align: center;
-  color: #2c3e50;
+  background-color: #000000;
+  color: transparent;
+  width: 0%;
+  content: '';
+  height: 2px;
+  transition: all 0.2s;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.xkb:hover::after,
+.xkb3::after {
+  width: 100%;
 }
 </style>

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+    frontend:
+        build: 
+         context: .
+         args:
+            BACKEND_URL: ${BACKEND_URL}
+        image: frontend:production
+networks:
+    default:
+       external:
+          name: integrated-network
