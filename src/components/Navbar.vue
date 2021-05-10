@@ -53,7 +53,10 @@
       :class="[
         isScrolled ? 'lg:h-20' : 'h-navbar',
         isScrolled ? 'shadow-md' : '',
-        isScrolled || $route.fullPath !== '/' ? 'w-full' : 'w-10/12',
+        isScrolled ||
+        ($route.fullPath !== '/' && $route.fullPath !== '/product')
+          ? 'w-full'
+          : 'w-10/12',
       ]"
     >
       <router-link

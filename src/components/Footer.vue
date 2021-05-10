@@ -7,7 +7,7 @@
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/All_rights_reserved_logo.svg/1200px-All_rights_reserved_logo.svg.png"
         />
       </div>
-      <h1 class="text-white text-center">All right not reserved.</h1>
+      <h1 class="text-white text-center">All rights not reserved.</h1>
       <h1 class="text-white text-center text-2xl font-bold m-2">
         KB Group Enterprise™
       </h1>
