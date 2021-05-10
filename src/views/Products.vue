@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import Brands from '@/components/Brands';
-import Add from '@/components/Add.vue';
-import Update from '@/components/Update.vue';
+import Brands from '@/components/product/Brands';
+import Add from '@/components/form/Add.vue';
+import Update from '@/components//form/Update.vue';
 import { mapState } from 'vuex';
 export default {
   name: 'Products',

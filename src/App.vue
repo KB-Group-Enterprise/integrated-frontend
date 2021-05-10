@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar';
-import Notification from './components/Notification';
-import Footer from './components/Footer';
+import Navbar from './components/core/Navbar';
+import Notification from './components/core/Notification';
+import Footer from './components/core/Footer';
 export default {
   components: {
     Footer,

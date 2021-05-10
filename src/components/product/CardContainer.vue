@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Card from '@/components/Card.vue';
+import Card from '@/components/product/Card.vue';
 export default {
   name: 'card-container',
   props: ['cars'],

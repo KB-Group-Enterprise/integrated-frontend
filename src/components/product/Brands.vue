@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import Dropdown from '@/components/Dropdown.vue';
-import CardContainer from '@/components/CardContainer.vue';
-import Pagination from '@/components/Pagination.vue';
-import CarType from '@/components/CarType.vue';
-import Banner from '@/components/Banner.vue';
+import Dropdown from '@/components/product/Dropdown.vue';
+import CardContainer from '@/components/product/CardContainer.vue';
+import Pagination from '@/components/product/Pagination.vue';
+import CarType from '@/components/product/CarType.vue';
+import Banner from '@/components/core/Banner.vue';
 export default {
   name: 'brands',
   components: {
