@@ -3,7 +3,8 @@
     <div class="w-full h-60 mt-28 bg-black flex flex-col justify-end pb-10">
       <div class="flex justify-center">
         <img
-          class="filter invert w-8 h-8 mb-2"
+          class="filter invert mb-2"
+          style="width: 30px; height: 30px; max-width: 30px; max-height: 30px"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/All_rights_reserved_logo.svg/1200px-All_rights_reserved_logo.svg.png"
         />
       </div>
